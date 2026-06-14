@@ -2,6 +2,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import webpack from "webpack";
 import HTMLWebpackPlugin from "html-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,6 +34,10 @@ export default (env: EnvVariables = {}) => {
         __IS_DEV__: JSON.stringify(isDev),
       }),
       new webpack.HotModuleReplacementPlugin(),
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false, // Не открывать автоматически
+      }
+      ),
     ],
     module: {
       rules: [
@@ -54,7 +59,6 @@ export default (env: EnvVariables = {}) => {
           use: ["style-loader", "css-loader", "sass-loader"],
           exclude: /node_modules/,
         },
-        
       ],
     },
     resolve: {

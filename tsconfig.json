@@ -9,13 +9,20 @@
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"], // Добавьте эту строку
+    "types": ["node", "jest"], // Добавьте "jest" в types
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@config/*": ["./config/*"] // Добавьте эту строку
+      "@config/*": ["./config/*"]
     }
   },
-  "include": ["src/**/*", "config/**/*"], // Добавьте config
+  "include": [
+    "src/**/*",
+    "config/**/*",
+    "config/jest/jest.config.cjs",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "./config/jest/setupTests.ts"
+, "config/storybook"  ],
   "exclude": ["node_modules"]
 }

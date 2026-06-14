@@ -10,9 +10,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    // Уберите или закомментируйте эти строки, если нет плагинов
-    // 'plugin:import/recommended',
-    // 'plugin:import/typescript',
+    "plugin:i18next/recommended",
+    "plugin:storybook/recommended"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -26,6 +25,7 @@ module.exports = {
     "react",
     "@typescript-eslint",
     "react-hooks",
+    "i18next", // Добавьте, если используете i18next
     // 'import', // Закомментируйте, пока не установите плагин
   ],
   rules: {
@@ -33,7 +33,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".tsx", ".ts"] }],
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "warn",
-
+    "i18next/no-literal-string": ['error', {markupOnly: true, ignoreAttribute: ['data-testid', 'to']}], // Настройка для i18next
     // Отключаем правила import, так как нет плагина
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",

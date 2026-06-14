@@ -22,5 +22,30 @@
   // Типы файлов для ESLint
   "eslint.options": {
     "extensions": [".js", ".jsx", ".ts", ".tsx"]
+  },
+  {
+  // Stylelint настройки
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss", "sass"],
+  "stylelint.snippet": ["css", "scss", "sass"],
+  
+  // Авто-исправление при сохранении
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": true,
+    "source.fixAll.eslint": true
+  },
+  
+  // Интеграция с CSS/SCSS
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  
+  // Форматирование
+  "editor.formatOnSave": true,
+  "[scss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
   }
 }

@@ -1,5 +1,11 @@
 {
     "Тест": "Test",
     "Перевод": "Translation",
-    "Язык": "English"
+    "Язык": "English",
+    "Произошла непредвиденная ошибка": "An unexpected error has occurred",
+    "Обновить страницу": "Refresh page",
+    "throw error": "Throw error",
+    "Главная страница": "Main page",
+    "О сайте": "About site",
+    "Loading...": "Loading..."
 }
