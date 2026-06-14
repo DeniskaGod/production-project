@@ -9,7 +9,12 @@
     "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"] // Добавьте эту строку
+    "types": ["node"], // Добавьте эту строку
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@config/*": ["./config/*"] // Добавьте эту строку
+    }
   },
   "include": ["src/**/*", "config/**/*"], // Добавьте config
   "exclude": ["node_modules"]

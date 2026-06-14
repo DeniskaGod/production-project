@@ -29,6 +29,10 @@ export default (env: EnvVariables = {}) => {
         template: path.resolve(__dirname, "public", "index.html"),
       }),
       new webpack.ProgressPlugin(),
+      new webpack.DefinePlugin({
+        __IS_DEV__: JSON.stringify(isDev),
+      }),
+      new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
       rules: [
@@ -38,14 +42,27 @@ export default (env: EnvVariables = {}) => {
           exclude: /node_modules/,
         },
         {
+          test: /\.png$/,
+          type: "asset/resource", // Современный способ вместо file-loader
+        },
+        {
+          test: /\.svg$/,
+          use: ["@svgr/webpack"], // Исправлено: правильный загрузчик для SVG
+        },
+        {
           test: /\.s[ac]ss$/i,
           use: ["style-loader", "css-loader", "sass-loader"],
           exclude: /node_modules/,
         },
+        
       ],
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js"],
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+        "@config": path.resolve(__dirname, "config"),
+      },
     },
     devtool: isDev ? "inline-source-map" : false,
     devServer: isDev
