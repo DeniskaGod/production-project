@@ -36,8 +36,7 @@ export default (env: EnvVariables = {}) => {
       new webpack.HotModuleReplacementPlugin(),
       new BundleAnalyzerPlugin({
         openAnalyzer: false, // Не открывать автоматически
-      }
-      ),
+      }),
     ],
     module: {
       rules: [

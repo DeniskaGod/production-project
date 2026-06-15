@@ -13,8 +13,12 @@
     "scss/no-global-function-names": null,
     "property-no-vendor-prefix": null,
     "value-no-vendor-prefix": null,
-    "selector-type-no-unknown": [true, {
-      "ignoreTypes": ["/^\\d+$/"]
-    }]
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["/^\\d+$/"]
+      }
+    ],
+    "rule-empty-line-before": null
   }
 }
