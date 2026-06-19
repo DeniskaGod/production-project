@@ -39,6 +39,8 @@ module.exports = {
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
   },
   settings: {
     react: {

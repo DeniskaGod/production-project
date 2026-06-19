@@ -1,4 +1,6 @@
+import { useTheme } from '@/app/providers/ThemeProvider/lib/useTheme';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { lazy } from 'react';
 import { RouteProps } from 'react-router-dom';
 
@@ -6,11 +8,15 @@ const MainPage = lazy(() => import('@/pages/MainPage/ui/MainPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage/ui/AboutPage'));
 
 // Компонент-обертка для страниц
-const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-  <div className="page-wrapper">
-    {children}
-  </div>
-);
+const PageWrapper = ({ children }: { children: React.ReactNode }) => {
+  const { theme } = useTheme(); // Получаем текущую тему
+  
+  return (
+    <div className={classNames('page-wrapper', {}, [theme])}>
+      {children}
+    </div>
+  );
+};
 
 export enum AppRoutes {
     MAIN = 'main',

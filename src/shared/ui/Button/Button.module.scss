@@ -3,11 +3,15 @@
   color: var(--primary-color);
 }
 
-.clear {
+.clear,
+.clearInverted {
   padding: 0;
   border: none;
   background: none;
   outline: none;
+  .clearInverted {
+    color: var(--inverted-primary-color);
+  }
 }
 
 .background {
@@ -36,4 +40,11 @@
 .size_xl {
   width: var(--font-line-xl);
   height: var(--font-line-xl);
+}
+
+.outline {
+  border: 1px solid var(--primary-color);
+  background: none;
+  color: var(--primary-color);
+  padding: 12px;
 }

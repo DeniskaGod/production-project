@@ -3,10 +3,13 @@
 @import "themes/normal";
 @import "themes/dark";
 
-.app {
+body {
   font: var(--font-m);
-  background: var(--bg-color);
   color: var(--primary-color);
+}
+
+.app {
+  background: var(--bg-color);
   min-height: 100vh;
 }
 
@@ -15,6 +18,18 @@
 }
 
 .page-wrapper {
-  flex-grow: 1;
   padding: 20px;
+  min-height: 100vh;
+  flex-grow: 1;
+
+  // Стили для темы
+  &.light {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+  }
+
+  &.dark {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+  }
 }

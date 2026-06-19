@@ -4,8 +4,10 @@ import cls from "./Button.module.scss";
 
 export enum ThemeButton {
   CLEAR = "clear",
+  CLEAR_INVERTED = "clearInverted",
   BACKGROUND = "background",
   BACKGROUND_INVERTED = "backgroundInverted",
+  OUTLINE = "outline",
 }
 
 export enum SizeButton {
@@ -28,13 +30,13 @@ export default function Button({
 }: ButtonProps) {
 
   const mods: Record<string, boolean> = {
-    [cls[theme]]: true,
-    [cls[size]]: true,
+    ...(theme && { [cls[theme]]: true }),
+    ...(size && { [cls[size]]: true }),
   };
   return (
     <button
       type="button"
-      className={classNames(cls.Button, mods, [className])}
+      className={classNames(cls.Button, mods, className ? [className] : [])}
       {...rest}
     >
       {rest.children}
