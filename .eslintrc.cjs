@@ -41,6 +41,7 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
+    "no-param-resign": "off",
   },
   settings: {
     react: {
