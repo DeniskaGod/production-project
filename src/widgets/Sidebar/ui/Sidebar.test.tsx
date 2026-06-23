@@ -26,6 +26,7 @@ jest.mock("@/shared/ui/Button/Button", () => ({
 import { render, screen } from "@testing-library/react";
 import Sidebar from "./Sidebar";
 
+
 describe("Sidebar", () => {
   test("проверка рендера компонента", () => {
     render(<Sidebar />);

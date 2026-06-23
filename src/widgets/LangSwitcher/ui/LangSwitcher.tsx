@@ -16,7 +16,7 @@ export default function LangSwitcher({ className, size }: LangSwitcherProps) {
   };
   return (
     <Button
-      className={classNames('', {}, [className])}
+      className={classNames('', {}, className ? [className] : [] )}
       theme={ThemeButton.CLEAR}
       onClick={toggleLanguage}
     >

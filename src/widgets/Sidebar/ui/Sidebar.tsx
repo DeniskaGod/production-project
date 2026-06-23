@@ -26,7 +26,7 @@ export default function Sidebar({ className }: SidebarProps) {
   return (
     <div
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
-        className,
+        className || "",
       ])}
     >
       <Button
