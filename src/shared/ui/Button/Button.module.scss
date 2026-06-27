@@ -48,3 +48,8 @@
   color: var(--primary-color);
   padding: 12px;
 }
+
+.disabled {
+  opacity: 0.5;
+  cursor: default;
+}

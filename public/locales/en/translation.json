@@ -11,5 +11,8 @@
   "Loading...": "Loading...",
   "Войти": "Login",
   "Введите username": "Enter username",
-  "Введите пароль": "Enter password"
+  "Введите пароль": "Enter password",
+  "Форма авторизации": "Authorization form",
+  "Вы ввели неправильный логин или пароль": "You entered an incorrect login or password",
+  "Выйти": "Logout"
 }

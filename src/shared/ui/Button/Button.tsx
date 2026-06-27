@@ -20,23 +20,27 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
   size?: SizeButton;
+  disabled?: boolean;
 }
 
 export default function Button({
   className,
   theme,
   size,
+  disabled,
   ...rest
 }: ButtonProps) {
 
   const mods: Record<string, boolean> = {
     ...(theme && { [cls[theme]]: true }),
     ...(size && { [cls[size]]: true }),
+    ...(disabled && { [cls.disabled]: true }),
   };
   return (
     <button
       type="button"
       className={classNames(cls.Button, mods, className ? [className] : [])}
+      disabled={disabled}
       {...rest}
     >
       {rest.children}
