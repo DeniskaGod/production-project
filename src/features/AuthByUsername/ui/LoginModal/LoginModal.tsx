@@ -1,18 +1,16 @@
-import { LoginForm } from '../LoginForm/LoginForm';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { Modal } from '@/shared/ui/Modal/Modal';
+import { Modal } from "@/shared/ui/Modal/Modal";
+import { Suspense } from "react";
+import { LoginForm } from "../LoginForm/LoginForm";
 
 interface LoginModalProps {
-    isOpen: boolean;
-    onClose: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export const LoginModal = ({ isOpen, onClose }: LoginModalProps) => (
-    <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        lazy
-    >
-        <LoginForm />
-    </Modal>
+const LoginModal = ({ isOpen, onClose }: LoginModalProps) => (
+  <Modal isOpen={isOpen} onClose={onClose} lazy>
+    <LoginForm />
+  </Modal>
 );
+
+export default LoginModal;
