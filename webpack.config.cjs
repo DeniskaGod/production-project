@@ -13,8 +13,40 @@ module.exports = (env = {}) => {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
       path: path.resolve(__dirname, 'build'),
-      filename: '[name].[contenthash].js',
+      filename: isDev ? '[name].[contenthash].js' : '[name].[contenthash].js',
+      chunkFilename: isDev ? '[name].[contenthash].chunk.js' : '[name].[contenthash].chunk.js',
       clean: true,
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 5,
+          },
+          react: {
+            test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom|react-redux|react-i18next)[\\/]/,
+            name: 'react-vendors',
+            chunks: 'all',
+            priority: 10,
+          },
+          redux: {
+            test: /[\\/]node_modules[\\/](@reduxjs\/toolkit|redux)[\\/]/,
+            name: 'redux-vendors',
+            chunks: 'all',
+            priority: 10,
+          },
+        },
+      },
+      runtimeChunk: 'single',
+    },
+    performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
     },
     plugins: [
       new HtmlWebpackPlugin({

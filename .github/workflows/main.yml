@@ -14,24 +14,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
+      - name: Starting Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install
-      - name: build production project
-        run: npm run build:prod
-        if: always()
+        run: npm ci  # ← используй ci вместо install (быстрее)
       - name: linting typescript
         run: npm run lint:ts
-        if: always()
       - name: linting css
         run: npm run lint:scss
-        if: always()
       - name: unit testing
         run: npm run unit
-        if: always()
+      - name: build production project
+        run: npm run build:prod
       # - name: build storybook
       # run: npm run storybook:build
       # - name: screenshot testing
