@@ -17,9 +17,7 @@
     "lint:scss": "stylelint \"src/**/*.{css,scss}\"",
     "stylelint:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
     "stylelint:check": "stylelint \"src/**/*.{css,scss}\" --max-warnings 0",
-    "unit": "jest --config ./config/jest/jest.config.cjs",
-    "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "build-storybook": "build-storybook -c ./config/storybook"
+    "unit": "jest --config ./config/jest/jest.config.cjs"
   },
   "keywords": [],
   "author": "",

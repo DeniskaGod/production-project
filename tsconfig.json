@@ -23,7 +23,6 @@
     "config/jest/jest.config.cjs",
     "**/*.test.ts",
     "**/*.test.tsx",
-    "./config/jest/setupTests.ts"
-, "config/storybook"  ],
+    "./config/jest/setupTests.ts"],
   "exclude": ["node_modules"]
 }
