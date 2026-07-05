@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cls from './SidebarItem.module.scss';
 import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink/AppLink';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -10,14 +10,14 @@ interface SidebarItemProps {
     collapsed?: boolean;
 }
 
-export default function SidebarItem({ item, collapsed }: SidebarItemProps) {
+export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation();
 
     return (
         <AppLink
             theme={AppLinkTheme.SECONDARY}
             to={item.path}
-            className={classNames(cls.item)}
+            className={classNames(cls.item, { [cls.collapsed]: collapsed }, [])}
         >
             <item.Icon className={cls.icon} />
             <span className={classNames(cls.link)}>
@@ -25,4 +25,8 @@ export default function SidebarItem({ item, collapsed }: SidebarItemProps) {
             </span>
         </AppLink>
     );
-}
+});
+
+// ensure component has a display name for debugging and lint
+SidebarItem.displayName = 'SidebarItem';
+

@@ -80,3 +80,5 @@ export const Input = memo((props: InputProps) => {
         </div>
     );
 });
+
+Input.displayName = 'Input';

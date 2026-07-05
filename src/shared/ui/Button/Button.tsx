@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
 
@@ -23,13 +23,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export default function Button({
+export const Button = memo(({
   className,
   theme,
   size,
   disabled,
   ...rest
-}: ButtonProps) {
+}: ButtonProps) => {
 
   const mods: Record<string, boolean> = {
     ...(theme && { [cls[theme]]: true }),
@@ -46,4 +46,7 @@ export default function Button({
       {rest.children}
     </button>
   );
-}
+});
+
+export default Button;
+Button.displayName = "Button";

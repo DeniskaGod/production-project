@@ -1,20 +1,18 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./Sidebar.module.scss";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
 import { LangSwitcher } from "@/widgets/LangSwitcher";
 import Button, { SizeButton, ThemeButton } from "@/shared/ui/Button/Button";
-import { useTranslation } from "react-i18next";
-import SidebarItem from "../SidebarItem/SidebarItem";
+import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { SidebarItemsList } from "../../model/item";
 
 interface SidebarProps {
   className?: string;
 }
 
-export default function Sidebar({ className }: SidebarProps) {
+export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = React.useState(false);
-  const { t } = useTranslation();
 
   const onToggle = () => {
     setCollapsed((prev) => !prev);
@@ -50,5 +48,5 @@ export default function Sidebar({ className }: SidebarProps) {
       </div>
     </div>
   );
-}
-//  16
+});
+Sidebar.displayName = "Sidebar";
