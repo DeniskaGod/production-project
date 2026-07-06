@@ -2,6 +2,7 @@ import { CounterSchema } from "@/entities/Counter";
 import { ProfileSchema } from "@/entities/Profile/model/types/profile";
 import { UserSchema } from "@/entities/User";
 import { LoginSchema } from "@/features/AuthByUsername";
+import { $api } from "@/shared/api/api";
 import {
   AnyAction,
   CombinedState,
@@ -9,6 +10,8 @@ import {
   Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit";
+import { AxiosInstance } from "axios";
+import { NavigateFunction } from "react-router-dom";
 
 export interface StateSchema {
   counter: CounterSchema;
@@ -30,4 +33,14 @@ export interface ReducerManager {
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
   reducerManager: ReducerManager; // ← было replaceReducer, исправлено на reducerManager
+}
+
+export interface ThunkExtraArg {
+  api: AxiosInstance;
+  navigate: NavigateFunction;
+}
+
+export interface ThunkConfig<T> {
+  rejectValue: T;
+  extra: ThunkExtraArg;
 }
