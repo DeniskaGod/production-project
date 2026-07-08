@@ -8,7 +8,7 @@ interface LoaderProps {
 
 export default function Loader({ className }: LoaderProps) {
   return (
-    <div className={classNames('loader', {}, [className])}>
+    <div className={classNames('loader', {}, className ? [className] : [])}>
         <span></span>
     </div>
   )

@@ -12,7 +12,9 @@ import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLogi
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
-import DynamicModuleLoader, { ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import DynamicModuleLoader, {
+  ReducersList,
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 
 export interface LoginFormProps {
@@ -20,9 +22,8 @@ export interface LoginFormProps {
   onSuccess: () => void;
 }
 
-const initialReducer: ReducersList= {
+const initialReducer: ReducersList = {
   loginForm: loginReducer,
-
 };
 
 export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
@@ -42,10 +43,12 @@ export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   );
 
   const onLoginClick = useCallback(async () => {
-    const result = await dispatch(loginByUsername({ username, password }));
-
-    if (result.meta.requestStatus === "fulfilled") {
+    try {
+      // @ts-ignore
+      await dispatch(loginByUsername({ username, password })).unwrap();
       onSuccess();
+    } catch {
+      // login failed, error state is handled by redux
     }
   }, [onSuccess, dispatch, password, username]);
 

@@ -8,39 +8,40 @@ export type ReducersList = {
   [name in StateSchemaKey]?: Reducer;
 };
 
-type ReducersListEntry = [StateSchemaKey, Reducer];
-
 interface DynamicModuleLoaderProps {
   children: React.ReactNode;
   reducers: ReducersList;
+  removeAfterUnmount?: boolean;
 }
 
 export default function DynamicModuleLoader({
   children,
   reducers,
+  removeAfterUnmount = true,
 }: DynamicModuleLoaderProps) {
   const store = useStore() as ReduxStoreWithManager;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //  3. Проверяем что reducerManager существует
     if (store.reducerManager) {
-      Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-        store.reducerManager.add(name, reducer);
-        dispatch({ type: "@INIT ${name} reducer" });
+      // ✅ Исправлено: правильная типизация Object.entries
+      Object.entries(reducers).forEach(([name, reducer]) => {
+        store.reducerManager.add(name as StateSchemaKey, reducer);
+        dispatch({ type: `@INIT ${name} reducer` });
       });
     }
 
-    return () => {
-      if (store.reducerManager) {
-        Object.entries(reducers).forEach(
-          ([name]: ReducersListEntry) => {
-            store.reducerManager.remove(name);
-            dispatch({ type: "@DESTROY ${name} reducer" });
-          },
-        );
-      }
-    };
-  }, []); //  4. Добавляем store в зависимости
+    if (removeAfterUnmount) {
+      return () => {
+        if (store.reducerManager) {
+          Object.entries(reducers).forEach(([name]) => {
+            store.reducerManager.remove(name as StateSchemaKey);
+            dispatch({ type: `@DESTROY ${name} reducer` });
+          });
+        }
+      };
+    }
+  }, [dispatch, reducers, store.reducerManager, removeAfterUnmount]);
+
   return <>{children}</>;
 }

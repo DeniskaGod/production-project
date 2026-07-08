@@ -9,7 +9,7 @@ interface PageLoaderProps {
 
 export default function PageLoader({ className }: PageLoaderProps) {
   return (
-    <div className={classNames(cls.PageLoader, {}, [className])}>
+    <div className={classNames(cls.PageLoader, {}, className ? [className] : [])}>
         <Loader />
     </div>
   )
