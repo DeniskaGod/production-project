@@ -1,37 +1,130 @@
-import { fetchProfileData } from '@/entities/Profile/model/services/fetchProfileData/fetchProfileData';
-import { profileReducer } from '@/entities/Profile/model/slice/profileSlice';
-import { ProfileCard } from '@/entities/Profile/ui/ProfileCard/ProfileCard';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import DynamicModuleLoader, { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import React, { memo, useEffect } from 'react'
-import { useTranslation } from 'react-i18next';
+import { ProfilePageHeader } from "@/pages/ProfilePage/index";
+import { fetchProfileData } from "@/entities/Profile/model/services/fetchProfileData/fetchProfileData";
+import { profileReducer } from "@/entities/Profile/model/slice/profileSlice";
+import { ProfileCard } from "@/entities/Profile/ui/ProfileCard/ProfileCard";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import DynamicModuleLoader, {
+  ReducersList,
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
+import React, { memo, useCallback, useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  getProfileError,
+  getProfileForm,
+  getProfileIsLoading,
+  getProfileReadonly,
+  profileActions,
+} from "@/entities/Profile";
+import { Country, Currency } from "@/shared/const/common";
 
 const reducers: ReducersList = {
   profile: profileReducer,
-}
+};
 
 interface ProfilePageProps {
-    className?: string;
+  className?: string;
 }
 
 export const ProfilePage = memo(({ className }: ProfilePageProps) => {
-    const { t } = useTranslation('profile');
-    const dispatch = useAppDispatch();
-    useEffect(() => {
-        dispatch(fetchProfileData());
-    }, [dispatch]);
+  const dispatch = useAppDispatch();
+  const formData = useSelector(getProfileForm);
+  const isLoading = useSelector(getProfileIsLoading);
+  const error = useSelector(getProfileError);
+  const readonly = useSelector(getProfileReadonly);
 
+  useEffect(() => {
+    dispatch(fetchProfileData());
+  }, [dispatch]);
 
+  const onChangeFirstname = useCallback(
+    (newFirstname?: string) => {
+      dispatch(profileActions.updateProfile({ first: newFirstname || "" }));
+    },
+    [dispatch],
+  );
+
+  const onChangeLastname = useCallback(
+    (newLastname?: string) => {
+      dispatch(profileActions.updateProfile({ lastname: newLastname || "" }));
+    },
+    [dispatch],
+  );
+
+  // ✅ Валидация возраста
+  const onChangeAge = useCallback(
+    (newAge?: string) => {
+      // Если поле пустое - сохраняем undefined
+      if (!newAge) {
+        dispatch(profileActions.updateProfile({ age: undefined }));
+        return;
+      }
+
+      // Проверяем что введены только цифры
+      const ageNumber = Number(newAge);
+      if (!isNaN(ageNumber) && ageNumber >= 0 && ageNumber <= 150) {
+        dispatch(profileActions.updateProfile({ age: ageNumber }));
+      }
+      // Если введены не цифры - ничего не делаем
+    },
+    [dispatch],
+  );
+
+  const onChangeCity = useCallback(
+    (newCity?: string) => {
+      dispatch(profileActions.updateProfile({ city: newCity || "" }));
+    },
+    [dispatch],
+  );
+
+  const onChangeCurrency = useCallback(
+    (currency: Currency) => {
+      dispatch(profileActions.updateProfile({ currency }));
+    },
+    [dispatch],
+  );
+
+  const onChangeCountry = useCallback(
+    (country: Country) => {
+      dispatch(profileActions.updateProfile({ country }));
+    },
+    [dispatch],
+  );
+  const onChangeUsername = useCallback(
+    (newUsername?: string) => {
+      dispatch(profileActions.updateProfile({ username: newUsername || "" }));
+    },
+    [dispatch],
+  );
+  const onChangeAvatar = useCallback(
+    (newAvatar?: string) => {
+      dispatch(profileActions.updateProfile({ avatar: newAvatar || "" }));
+    },
+    [dispatch],
+  );
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-    <div className={classNames('', {}, className ? [className] : [])}>
-      <ProfileCard />
-    </div>
+      <div className={classNames("", {}, className ? [className] : [])}>
+        <ProfilePageHeader />
+        <ProfileCard
+          data={formData}
+          isLoading={isLoading}
+          error={error}
+          onChangeFirstname={onChangeFirstname}
+          onChangeLastname={onChangeLastname}
+          onChangeAge={onChangeAge}
+          onChangeCity={onChangeCity}
+          onChangeUsername={onChangeUsername}
+          onChangeAvatar={onChangeAvatar}
+          readonly={readonly}
+          onChangeCurrency={onChangeCurrency}
+          onChangeCountry={onChangeCountry}
+        />
+      </div>
     </DynamicModuleLoader>
-  )
+  );
 });
 
 export default ProfilePage;
-ProfilePage.displayName = 'ProfilePage';
+ProfilePage.displayName = "ProfilePage";

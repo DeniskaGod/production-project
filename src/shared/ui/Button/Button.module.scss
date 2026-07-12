@@ -49,6 +49,13 @@
   padding: 12px;
 }
 
+.outlineRed {
+  border: 1px solid var(--red-light);
+  background: none;
+  color: var(--red-light);
+  padding: 12px;
+}
+
 .disabled {
   opacity: 0.5;
   cursor: default;
