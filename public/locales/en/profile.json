@@ -7,5 +7,14 @@
   "Отменить": "Cancel",
   "Сохранить": "Save",
   "Ваш возраст": "Your age",
-  "Укажите валюту": "Specify currency"
+  "Город": "City",
+  "Имя пользователя": "Username",
+  "Аватар": "Avatar",
+  "Укажите валюту": "Specify currency",
+  "Укажите страну": "Specify country",
+  "Произошла ошибка при сохранении": "An error occurred while saving",
+  "Произошла ошибка при сохранении пользовательских данных": "An error occurred while saving user data",
+  "Произошла ошибка при сохранении возраста": "An error occurred while saving age",
+  "Произошла ошибка при сохранении страны": "An error occurred while saving country",
+  "Произошла ошибка при сохранении данных": "An error occurred while saving data"
 }

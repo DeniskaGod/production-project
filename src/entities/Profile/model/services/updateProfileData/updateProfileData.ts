@@ -1,19 +1,27 @@
 // entities/Profile/model/services/updateProfileData/updateProfileData.ts
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Profile } from "../../types/profile";
+import { Profile, ValidateProfileError } from "../../types/profile";
 import { StateSchema, ThunkConfig } from "@/app/providers/StoreProvider";
 import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
+import { validateProfileData } from "../validateProfileData/validateProfileData";
 
 export const updateProfileData = createAsyncThunk<
   Profile,
   void,
-  ThunkConfig<string>
+  ThunkConfig<ValidateProfileError[]>
 >("profile/updateProfileData", async (_, thunkApi) => {
   const { extra, rejectWithValue, getState } = thunkApi;
 
   try {
     const state = getState() as StateSchema;
     const formData = getProfileForm(state);
+
+    const result = validateProfileData(formData);
+
+    // validateProfileData returns { errors: ValidateProfileError[], valid: boolean }
+    if (!result.valid) {
+      return rejectWithValue(result.errors);
+    }
 
     console.log("Sending formData:", formData); // ✅ проверка
 
@@ -28,6 +36,6 @@ export const updateProfileData = createAsyncThunk<
     return response.data;
   } catch (e) {
     console.log(e);
-    return rejectWithValue("error");
+    return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
   }
 });
