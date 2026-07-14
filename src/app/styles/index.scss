@@ -2,6 +2,7 @@
 @import "variables/global";
 @import "themes/normal";
 @import "themes/dark";
+@import "themes/gray";
 
 .app,
 .app_modal {
@@ -20,7 +21,7 @@
 
 .page-wrapper {
   padding: 20px;
-  min-height: 100vh;
+  min-height: 90vh;
   flex-grow: 1;
 
   // Стили для темы
