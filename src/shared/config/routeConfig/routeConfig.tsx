@@ -19,7 +19,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-type AppRoutesProps = RouteProps & {
+export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
 }
 

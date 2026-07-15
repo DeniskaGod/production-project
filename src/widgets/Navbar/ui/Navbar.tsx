@@ -1,4 +1,5 @@
 import React, { memo, useCallback } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ импорт
 import cls from "./Navbar.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
@@ -16,6 +17,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = React.useState(false);
   const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // ✅ добавляем navigate
+
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
   }, []);
@@ -26,7 +29,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
-  }, [dispatch]);
+    navigate("/"); // ✅ редирект на главную
+  }, [dispatch, navigate]);
 
   if (authData) {
     return (
