@@ -16,6 +16,7 @@ module.exports = (env = {}) => {
       filename: isDev ? '[name].[contenthash].js' : '[name].[contenthash].js',
       chunkFilename: isDev ? '[name].[contenthash].chunk.js' : '[name].[contenthash].chunk.js',
       clean: true,
+      publicPath: '/', // ✅ добавляем publicPath
     },
     optimization: {
       splitChunks: {
