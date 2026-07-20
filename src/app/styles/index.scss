@@ -13,25 +13,19 @@
 .app {
   background: var(--bg-color);
   min-height: 100vh;
+  overflow: hidden; // ✅ убираем скролл на уровне app
 }
 
 .content-page {
   display: flex;
+  height: calc(100vh - var(--navbar-height)); // ✅ фиксированная высота
+  overflow: hidden; // ✅ убираем скролл здесь
 }
 
 .page-wrapper {
-  padding: 20px;
-  min-height: 90vh;
   flex-grow: 1;
-
-  // Стили для темы
-  &.light {
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-  }
-
-  &.dark {
-    background-color: var(--bg-color);
-    color: var(--primary-color);
-  }
+  padding: 20px 20px 20px 45px;
+  overflow-y: auto; // ✅ только здесь скролл
+  width: 100%;
+  height: 100%; // ✅ занимает всю высоту
 }
