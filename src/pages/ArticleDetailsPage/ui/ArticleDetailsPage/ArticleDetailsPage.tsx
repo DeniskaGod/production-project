@@ -4,6 +4,8 @@ import cls from './ArticleDetailsPage.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleDetails } from '@/entities/Article';
 import { useParams } from 'react-router-dom';
+import { Text } from '@/shared/ui/Text/Text';
+import { CommentList } from '@/entities/Comment';
 
 interface ArticleDetailsPageProps {
     className?: string;
@@ -25,6 +27,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <div className={classNames(cls.ArticleDetailsPage, {}, className ? [className] : [])}>
             <ArticleDetails id={id} />
+            <Text text={t('Коментарии')}/>
+            <CommentList isLoading={true} comments={[]}/>
         </div>
     );
 };
