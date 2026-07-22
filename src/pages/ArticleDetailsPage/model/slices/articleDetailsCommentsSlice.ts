@@ -48,4 +48,3 @@ const articleDetailsCommentsSlice = createSlice({
 
 export const { reducer: articleDetailsCommentsReducer } =
   articleDetailsCommentsSlice;
-// 27

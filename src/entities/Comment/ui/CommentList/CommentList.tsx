@@ -5,6 +5,7 @@ import { CommentCard } from '../CommentCard/CommentCard';
 import { Comment } from '../../model/types/comment';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text/Text';
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
 interface CommentListProps {
     className?: string;
@@ -15,6 +16,17 @@ interface CommentListProps {
 export const CommentList = memo((props: CommentListProps) => {
     const { className, isLoading, comments } = props;
     const { t } = useTranslation();
+
+    // ✅ Сначала проверяем isLoading
+    if (isLoading) {
+        return (
+            <div className={classNames(cls.CommentList, {}, className ? [className] : [])}>
+                <CommentCard isLoading comment={{ id: '1', user: { id: '1', username: 'username' }, text: 'text' }} />
+                <CommentCard isLoading comment={{ id: '1', user: { id: '1', username: 'username' }, text: 'text' }} />
+                <CommentCard isLoading comment={{ id: '1', user: { id: '1', username: 'username' }, text: 'text' }} />
+            </div>
+        );
+    }
 
     return (
         <div className={classNames(cls.CommentList, {}, className ? [className] : [])}>
@@ -32,7 +44,4 @@ export const CommentList = memo((props: CommentListProps) => {
     );
 });
 
-
 CommentList.displayName = 'CommentList';
-
-// 6 минута, пока просто смотреть
