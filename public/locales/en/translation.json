@@ -17,5 +17,7 @@
   "Выйти": "Logout",
   "Профиль": "Profile",
   "Статьи": "Articles",
-  "Комментарии отсутствуют": "Comments are missing"
+  "Комментарии отсутствуют": "Comments are missing",
+  "Введите текст комментария": "Enter comment text",
+  "Отправить": "Send"
 }

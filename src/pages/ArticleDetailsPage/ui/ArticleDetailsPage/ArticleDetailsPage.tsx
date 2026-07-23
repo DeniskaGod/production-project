@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { memo, useEffect } from "react";
+import { memo, useCallback, useEffect } from "react";
 import cls from "./ArticleDetailsPage.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ArticleDetails } from "@/entities/Article";
@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { AddCommentForm } from "@/features/addCommentForm";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -40,6 +41,16 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     }
   }, [dispatch, id]);
 
+  const onSendComment = useCallback(
+    (text: string) => {
+      // ✅ Обновляем список комментариев после отправки
+      if (id) {
+        dispatch(fetchCommentsByArticleId(id));
+      }
+    },
+    [dispatch, id],
+  );
+
   if (!id) {
     return (
       <div
@@ -53,6 +64,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
       </div>
     );
   }
+  
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -64,11 +76,14 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         )}
       >
         <ArticleDetails id={id} />
-        <Text text={t("Коментарии")} />
+        <AddCommentForm
+          className={cls.commentTitle}
+          onSendComment={onSendComment}
+        />
+        <Text text={t("Коментарии")} className={cls.commentTitle} />
         <CommentList isLoading={commentsIsLoading} comments={comments} />
       </div>
     </DynamicModuleLoader>
   );
 };
-
 export default memo(ArticleDetailsPage);

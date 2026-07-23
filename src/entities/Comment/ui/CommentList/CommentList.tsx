@@ -24,7 +24,7 @@ export const CommentList = memo((props: CommentListProps) => {
                 <CommentCard isLoading comment={{ id: '1', user: { id: '1', username: 'username' }, text: 'text' }} />
                 <CommentCard isLoading comment={{ id: '1', user: { id: '1', username: 'username' }, text: 'text' }} />
                 <CommentCard isLoading comment={{ id: '1', user: { id: '1', username: 'username' }, text: 'text' }} />
-            </div>
+            </div> 
         );
     }
 
