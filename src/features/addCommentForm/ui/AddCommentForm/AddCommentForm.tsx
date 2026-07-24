@@ -9,7 +9,7 @@ import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Input } from '@/shared/ui/Input/Input';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { sendComment } from '../../model/services/sendComment/sendComment'; // ✅ импорт
+import { addCommentForArticle } from '@/pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 
 export interface AddCommentFormProps {
     className?: string;
@@ -33,8 +33,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
     const onSendHandler = useCallback(async () => {
         if (text?.trim()) {
-            // ✅ отправляем комментарий через thunk
-            await dispatch(sendComment());
+            await dispatch(addCommentForArticle(text));
             onSendComment(text || '');
             onCommentTextChange('');
         }

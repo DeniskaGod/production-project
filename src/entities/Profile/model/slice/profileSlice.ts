@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Profile, ProfileSchema } from "../types/profile";
 import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
-import { updateProfileData } from "../services/updateProfileData/updateProfileData"; // ✅ импорт
+import { updateProfileData } from "../services/updateProfileData/updateProfileData";
 
 const initialState: ProfileSchema = {
   data: undefined,
@@ -9,6 +9,7 @@ const initialState: ProfileSchema = {
   isLoading: false,
   error: undefined,
   readonly: false,
+  validateErrors: undefined, // ✅ добавь
 };
 
 const profileSlice = createSlice({
@@ -32,7 +33,6 @@ const profileSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // fetchProfileData
       .addCase(fetchProfileData.pending, (state) => {
         state.error = undefined;
         state.isLoading = true;
@@ -47,9 +47,7 @@ const profileSlice = createSlice({
       )
       .addCase(fetchProfileData.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = Array.isArray(action.payload)
-          ? action.payload.join(", ")
-          : action.payload;
+        state.error = action.payload as string;
       })
       .addCase(updateProfileData.pending, (state) => {
         state.validateErrors = undefined;
@@ -62,12 +60,12 @@ const profileSlice = createSlice({
           state.data = action.payload;
           state.form = action.payload;
           state.readonly = true;
-          state.validateErrors = undefined; 
+          state.validateErrors = undefined;
         },
       )
       .addCase(updateProfileData.rejected, (state, action) => {
         state.isLoading = false;
-        state.validateErrors = action.payload
+        state.validateErrors = action.payload as any; // ✅ исправлено
       });
   },
 });

@@ -5,7 +5,9 @@ import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
 import { LangSwitcher } from "@/widgets/LangSwitcher";
 import Button, { SizeButton, ThemeButton } from "@/shared/ui/Button/Button";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
-import { SidebarItemsList } from "../../model/item";
+import { getSidebarItems } from "../../model/item";
+import { useSelector } from "react-redux";
+import { getUserAuthData } from "@/entities/User";
 
 interface SidebarProps {
   className?: string;
@@ -13,20 +15,18 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = React.useState(false);
+  const user = useSelector(getUserAuthData);
 
   const onToggle = () => {
     setCollapsed((prev) => !prev);
   };
 
   const itemList = useMemo(() => {
-    return SidebarItemsList.map((item) => (
-      <SidebarItem 
-      key={item.path} 
-      item={item} 
-      collapsed={collapsed} 
-      />
+    const items = getSidebarItems(user?.id);
+    return items.map((item) => (
+      <SidebarItem key={item.path} item={item} collapsed={collapsed} />
     ));
-  }, [collapsed]);
+  }, [collapsed, user?.id]);
 
   return (
     <div
@@ -54,4 +54,3 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   );
 });
 Sidebar.displayName = "Sidebar";
-// 22

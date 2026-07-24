@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import React, { memo, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
+  getProfileData,
   getProfileError,
   getProfileForm,
   getProfileIsLoading,
@@ -22,6 +23,7 @@ import { Country, Currency } from "@/shared/const/common";
 import { Text, TextTheme } from "@/shared/ui/Text/Text";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
+import { getUserAuthData } from "@/entities/User";
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -40,6 +42,11 @@ export const ProfilePage = memo(({ className }: ProfilePageProps) => {
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
   const { id } = useParams<{ id: string }>();
+
+  const authData = useSelector(getUserAuthData);
+  const profileData = useSelector(getProfileData);
+  
+  const canEdit = authData?.id === profileData?.id;
 
   const validateErrorTranslate = {
     [ValidateProfileError.SERVER_ERROR]: t("Произошла ошибка при сохранении"),
@@ -149,7 +156,7 @@ export const ProfilePage = memo(({ className }: ProfilePageProps) => {
           onChangeCity={onChangeCity}
           onChangeUsername={onChangeUsername}
           onChangeAvatar={onChangeAvatar}
-          readonly={readonly}
+          readonly={!canEdit || readonly}
           onChangeCurrency={onChangeCurrency}
           onChangeCountry={onChangeCountry}
         />
