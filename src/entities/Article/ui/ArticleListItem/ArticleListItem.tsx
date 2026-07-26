@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import EyeIcon from 'shared/assets/icons/eye.svg';
+import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { useNavigate } from 'react-router-dom';
 import cls from './ArticleListItem.module.scss';
 import {
@@ -86,4 +86,3 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 });
 
 ArticleListItem.displayName = 'ArticleListItem';
-// 6
