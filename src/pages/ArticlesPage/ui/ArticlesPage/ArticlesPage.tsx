@@ -4,6 +4,7 @@ import cls from "./ArticlesPage.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ArticleList } from "@/entities/Article/ui/ArticleList/ArticleList";
 import { Article } from "@/entities/Article";
+import { ArticleView } from "@/entities/Article/model/types/article";
 
 interface ArticlesPageProps {
   className?: string;
@@ -16,6 +17,12 @@ const article = {
   img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
   views: 1022,
   createdAt: "26.02.2026",
+  user: {
+    id: "1",
+    username: "admin",
+    avatar:
+      "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg",
+  },
   type: ["IT", "SCIENCE", "ECONOMICS", "POLITICS"],
   blocks: [
     {
@@ -88,11 +95,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
       className={classNames(cls.ArticlesPage, {}, className ? [className] : [])}
     >
       <ArticleList
+        view={ArticleView.SMALL}
         articles={new Array(9).fill(0).map((item, index) => ({
-            ...article,
-            id: String(index),
+          ...article,
+          id: String(index + 1),
         }))}
-
       />
     </div>
   );

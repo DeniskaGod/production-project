@@ -14,10 +14,16 @@ import {
   getArticleComments,
 } from "../../model/slices/articleDetailsCommentsSlice";
 import { useSelector } from "react-redux";
-import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { AddCommentForm } from "@/features/addCommentForm";
+import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
+import {
+  getArticleDetailsData,
+  getArticleDetailsError,
+  getArticleDetailsIsLoading,
+} from "@/entities/Article/model/selectors/articleDetails";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -34,6 +40,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { id } = useParams<{ id: string }>();
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+  const article = useSelector(getArticleDetailsData);
+  const articleError = useSelector(getArticleDetailsError);
+  const articleIsLoading = useSelector(getArticleDetailsIsLoading);
 
   useEffect(() => {
     if (id) {
@@ -41,9 +50,12 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     }
   }, [dispatch, id]);
 
+  const onBackToList = useCallback(() => {
+    window.history.back();
+  }, []);
+
   const onSendComment = useCallback(
     (text: string) => {
-      // ✅ Обновляем список комментариев после отправки
       if (id) {
         dispatch(fetchCommentsByArticleId(id));
       }
@@ -64,7 +76,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
       </div>
     );
   }
-  
+
+  // ✅ Показываем комментарии и форму только если статья загружена и нет ошибки
+  const showComments = article && !articleError && !articleIsLoading;
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -75,15 +89,25 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
           className ? [className] : [],
         )}
       >
+        <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
+          {t("Назад к списку")}
+        </Button>
         <ArticleDetails id={id} />
-        <AddCommentForm
-          className={cls.commentTitle}
-          onSendComment={onSendComment}
-        />
-        <Text text={t("Коментарии")} className={cls.commentTitle} />
-        <CommentList isLoading={commentsIsLoading} comments={comments} />
+
+        {/* ✅ Показываем форму и комментарии только если статья загружена */}
+        {showComments && (
+          <>
+            <AddCommentForm
+              className={cls.commentTitle}
+              onSendComment={onSendComment}
+            />
+            <Text text={t("Коментарии")} className={cls.commentTitle} />
+            <CommentList isLoading={commentsIsLoading} comments={comments} />
+          </>
+        )}
       </div>
     </DynamicModuleLoader>
   );
 };
+
 export default memo(ArticleDetailsPage);
