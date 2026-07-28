@@ -5,6 +5,7 @@ import { UserSchema } from "@/entities/User";
 import { AddCommentFormSchema } from "@/features/addCommentForm";
 import { LoginSchema } from "@/features/AuthByUsername";
 import { ArticleDetailsCommentsSchema } from "@/pages/ArticleDetailsPage/model/types/ArticleDetailsCommentsSchema";
+import { ArticlesPageSchema } from "@/pages/ArticlesPage";
 import { $api } from "@/shared/api/api";
 import {
   AnyAction,
@@ -26,6 +27,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addCommentForm?: AddCommentFormSchema;
+  articlesPage: ArticlesPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

@@ -11,10 +11,10 @@ export function createReduxStore(
   initialState?: StateSchema,
   navigate?: NavigateFunction,
 ) {
-  const rootReducers: ReducersMapObject<StateSchema> = {
+  const rootReducers = {
     counter: counterReducer,
     user: userReducer,
-  };
+  } as ReducersMapObject<StateSchema>;
 
   const reducerManager = createReducerManager(rootReducers);
 
