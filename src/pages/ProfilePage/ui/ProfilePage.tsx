@@ -24,6 +24,7 @@ import { Text, TextTheme } from "@/shared/ui/Text/Text";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { getUserAuthData } from "@/entities/User";
+import { Page } from "@/shared/ui/Page/Page";
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -136,7 +137,7 @@ export const ProfilePage = memo(({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames("", {}, className ? [className] : [])}>
+       <Page className={className}>
         <ProfilePageHeader />
         {validateErrors?.length &&
           validateErrors.map((err) => (
@@ -160,7 +161,7 @@ export const ProfilePage = memo(({ className }: ProfilePageProps) => {
           onChangeCurrency={onChangeCurrency}
           onChangeCountry={onChangeCountry}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 });

@@ -1,12 +1,13 @@
+import { Page } from "@/shared/ui/Page/Page";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 
 export const MainPage = memo(() => {
   const { t } = useTranslation("main");
   return (
-    <div>
+    <Page>
       {t("Главная страница")}
-    </div>
+    </Page>
   );
 });
 

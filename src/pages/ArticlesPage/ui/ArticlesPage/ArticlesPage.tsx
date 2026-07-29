@@ -21,6 +21,7 @@ import {
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import { ArticleViewSelector } from "@/entities/Article";
+import { Page } from "@/shared/ui/Page/Page";
 
 interface ArticlesPageProps {
   className?: string;
@@ -40,8 +41,12 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const view = useSelector(getArticlesPageView);
 
   useEffect(() => {
-    dispatch(fetchArticlesList());
     dispatch(articlesPageActions.initState());
+    dispatch(
+      fetchArticlesList({
+        page: 1,
+      }),
+    );
   }, [dispatch]);
 
   const onViewClick = useCallback(
@@ -53,7 +58,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div
+      <Page
         className={classNames(
           cls.ArticlesPage,
           {},
@@ -62,7 +67,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
       >
         <ArticleViewSelector view={view} onViewClick={onViewClick} />
         <ArticleList view={view} isLoading={isLoading} articles={articles} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

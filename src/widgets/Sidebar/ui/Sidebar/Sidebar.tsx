@@ -29,7 +29,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   }, [collapsed, user?.id]);
 
   return (
-    <div
+    <menu
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
         className || "",
       ])}
@@ -50,7 +50,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
           size={collapsed ? SizeButton.L : SizeButton.M}
         />
       </div>
-    </div>
+    </menu>
   );
 });
 Sidebar.displayName = "Sidebar";

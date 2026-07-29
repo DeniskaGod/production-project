@@ -24,6 +24,7 @@ import {
   getArticleDetailsIsLoading,
 } from "@/entities/Article/model/selectors/articleDetails";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
+import { Page } from "@/shared/ui/Page/Page";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -65,7 +66,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
   if (!id) {
     return (
-      <div
+      <Page
         className={classNames(
           cls.ArticleDetailsPage,
           {},
@@ -73,7 +74,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         )}
       >
         {t("ARTICLE_NOT_FOUND")}
-      </div>
+      </Page>
     );
   }
 
@@ -82,7 +83,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div
+      <Page
         className={classNames(
           cls.ArticleDetailsPage,
           {},
@@ -105,7 +106,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
             <CommentList isLoading={commentsIsLoading} comments={comments} />
           </>
         )}
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };
