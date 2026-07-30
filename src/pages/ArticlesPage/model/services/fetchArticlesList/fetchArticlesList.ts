@@ -15,6 +15,7 @@ export const fetchArticlesList = createAsyncThunk<
   const { extra, rejectWithValue, getState } = thunkApi;
   const { page = 1 } = props;
   const limit = getArticlesPageLimit(getState() as StateSchema);
+
   try {
     const response = await extra.api.get<Article[]>("/articles", {
       params: {

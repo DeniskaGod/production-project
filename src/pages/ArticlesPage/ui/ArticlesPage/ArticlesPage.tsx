@@ -15,7 +15,9 @@ import {
 import { useSelector } from "react-redux";
 import {
   getArticlesPageError,
+  getArticlesPageHasMore,
   getArticlesPageIsLoading,
+  getArticlesPageNum,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
@@ -39,6 +41,17 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
+  const page = useSelector(getArticlesPageNum);
+  const hasMore = useSelector(getArticlesPageHasMore);
+
+  const onLoadNextPart = useCallback(() => {
+  // ✅ проверяем hasMore и isLoading
+  if (hasMore && !isLoading) {
+    const nextPage = page + 1;
+    dispatch(articlesPageActions.setPage(nextPage));
+    dispatch(fetchArticlesList({ page: nextPage }));
+  }
+}, [dispatch, page, hasMore, isLoading]);
 
   useEffect(() => {
     dispatch(articlesPageActions.initState());
@@ -59,6 +72,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page
+        onScrollEnd={onLoadNextPart}
         className={classNames(
           cls.ArticlesPage,
           {},

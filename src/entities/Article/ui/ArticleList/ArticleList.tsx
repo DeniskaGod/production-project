@@ -5,6 +5,7 @@ import cls from "./ArticleList.module.scss";
 import { Article, ArticleView } from "../../model/types/article";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { Text } from "@/shared/ui/Text/Text";
 
 interface ArticleListProps {
   className?: string;
@@ -22,21 +23,7 @@ const getSkeletons = (view: ArticleView) =>
 
 export const ArticleList = memo((props: ArticleListProps) => {
   const { className, articles, view = ArticleView.SMALL, isLoading } = props;
-  const { t } = useTranslation();
-
-  if (isLoading) {
-    return (
-      <div
-        className={classNames(
-          cls.ArticleList,
-          {},
-          className ? [className, cls[view]] : [],
-        )}
-      >
-        {getSkeletons(view)}
-      </div>
-    );
-  }
+  const { t } = useTranslation('article');
 
   const renderArticle = (article: Article) => (
     <ArticleListItem
@@ -56,6 +43,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
       )}
     >
       {articles.length > 0 ? articles.map(renderArticle) : null}
+      {isLoading && getSkeletons(view)}
+      {!isLoading && articles.length === 0 && <Text text={t('Статей нет')} />}
     </div>
   );
 });
