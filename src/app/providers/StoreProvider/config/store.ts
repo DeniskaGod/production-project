@@ -4,12 +4,10 @@ import { counterReducer } from "@/entities/Counter";
 import { userReducer } from "@/entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "@/shared/api/api";
-import { NavigateFunction } from "react-router-dom";
 import { CombinedState } from "@reduxjs/toolkit";
 
 export function createReduxStore(
   initialState?: StateSchema,
-  navigate?: NavigateFunction,
 ) {
   const rootReducers = {
     counter: counterReducer,
@@ -19,7 +17,6 @@ export function createReduxStore(
   const reducerManager = createReducerManager(rootReducers);
 
   const store = configureStore({
-    // ✅ Исправлено: приводим к правильному типу
     reducer: reducerManager.reduce as (
       state: StateSchema | undefined,
       action: any,
@@ -31,7 +28,6 @@ export function createReduxStore(
         thunk: {
           extraArgument: {
             api: $api,
-            navigate,
           },
         },
       }),
