@@ -4,6 +4,7 @@ import { ProfileSchema } from "@/entities/Profile/model/types/profile";
 import { UserSchema } from "@/entities/User";
 import { AddCommentFormSchema } from "@/features/addCommentForm";
 import { LoginSchema } from "@/features/AuthByUsername";
+import { UISchema } from "@/features/UI";
 import { ArticleDetailsCommentsSchema } from "@/pages/ArticleDetailsPage/model/types/ArticleDetailsCommentsSchema";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
 import { $api } from "@/shared/api/api";
@@ -20,6 +21,7 @@ import { NavigateFunction } from "react-router-dom";
 export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
+  ui: UISchema;
 
   // async reducers
   loginForm?: LoginSchema;

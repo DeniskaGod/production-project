@@ -5,13 +5,13 @@ import { userReducer } from "@/entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "@/shared/api/api";
 import { CombinedState } from "@reduxjs/toolkit";
+import { uiReducer } from "@/features/UI";
 
-export function createReduxStore(
-  initialState?: StateSchema,
-) {
+export function createReduxStore(initialState?: StateSchema) {
   const rootReducers = {
     counter: counterReducer,
     user: userReducer,
+    ui: uiReducer,
   } as ReducersMapObject<StateSchema>;
 
   const reducerManager = createReducerManager(rootReducers);

@@ -24,7 +24,7 @@ import {
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import { ArticleViewSelector } from "@/entities/Article";
-import { Page } from "@/shared/ui/Page/Page";
+import { Page } from "@/widgets/Page/Page";
 import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage";
 
 interface ArticlesPageProps {
