@@ -3,8 +3,8 @@ import TiledIcon from "@/shared/assets/icons/tiled.svg";
 import ListIcon from "@/shared/assets/icons/list.svg";
 import cls from "./ArticleViewSelector.module.scss";
 import { ArticleView } from "../../model/types/article";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { Icon } from "@/shared/ui/Icon/Icon";
 
 interface ArticleViewSelectorProps {
@@ -41,9 +41,9 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
     >
       {viewTypes.map((viewType) => (
         <Button
+          key={viewType.view}
           theme={ThemeButton.CLEAR}
           onClick={onClick(viewType.view)}
-          key={viewType.view}
         >
           <Icon
             Svg={viewType.icon}

@@ -99,7 +99,7 @@
         {
           "id": "1",
           "type": "TEXT",
-          "title": "Заголовок этого блока",
+          "title": "Заголовок этого блока ",
           "paragraphs": [
             "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.",
             "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
@@ -161,7 +161,7 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://img.magnific.com/free-photo/cute-kitten-sitting-staring-playful-fluffy-looking-camera-generated-by-artificial-intelligence_188544-113029.jpg?semt=ais_hybrid&w=740",
-      "views": 1022,
+      "views": 10122,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -185,7 +185,7 @@
       "title": "Kotlin news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
+      "views": 412,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -206,10 +206,10 @@
     },
     {
       "id": "5",
-      "title": "Python news",
+      "title": "Python news n2",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://i.pinimg.com/originals/2b/df/40/2bdf40702077a892f34b33cb7528e25d.jpg?nii=t",
-      "views": 1022,
+      "views": 3413,
       "createdAt": "26.02.2022",
       "userId": "1",
       "type": [
@@ -230,11 +230,11 @@
     },
     {
       "id": "6",
-      "title": "Kotlin news",
+      "title": "Kotlin news n 2",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 5423,
+      "createdAt": "26.02.2020",
       "userId": "1",
       "type": [
         "IT"
@@ -254,11 +254,11 @@
     },
     {
       "id": "7",
-      "title": "Python news",
+      "title": "Python news n3",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://static.daktilo.com/sites/827/uploads/2025/06/26/view-beautiful-persian-domestic-cat.webp",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 4331,
+      "createdAt": "26.02.2021",
       "userId": "1",
       "type": [
         "IT"
@@ -278,11 +278,11 @@
     },
     {
       "id": "8",
-      "title": "Kotlin news",
+      "title": "Kotlin news n12",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 1112,
+      "createdAt": "26.02.2024",
       "userId": "1",
       "type": [
         "IT"
@@ -302,11 +302,11 @@
     },
     {
       "id": "9",
-      "title": "Python news",
+      "title": "Python news n 31",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://avatars.mds.yandex.net/i?id=fc6e785efa4e25eff015d06944133f9a_l-5347210-images-thumbs&n=13",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 6453,
+      "createdAt": "26.02.2023",
       "userId": "1",
       "type": [
         "IT"
@@ -330,7 +330,7 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
       "views": 1022,
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2026",
       "userId": "1",
       "type": [
         "IT"
