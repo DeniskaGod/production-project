@@ -10,7 +10,9 @@ import {
   getArticleDetailsIsLoading,
 } from "../../model/selectors/articleDetails";
 import { ArticleBlock, ArticleBlockType } from "../../model/types/article";
-import DynamicModuleLoader, { ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import DynamicModuleLoader, {
+  ReducersList,
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
 import Avatar from "@/shared/ui/Avatar/Avatar";
@@ -26,6 +28,7 @@ import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleT
 interface ArticleDetailsProps {
   className?: string;
   id: string;
+  currentLang: "ru" | "en"; // ✅ добавляем пропс
 }
 
 const reducers: ReducersList = {
@@ -33,7 +36,7 @@ const reducers: ReducersList = {
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-  const { className, id } = props;
+  const { className, id, currentLang } = props; // ✅ получаем currentLang
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getArticleDetailsIsLoading);
@@ -72,7 +75,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   }, []);
 
   useEffect(() => {
-      dispatch(fetchArticleById(id));
+    dispatch(fetchArticleById(id));
   }, [dispatch, id]);
 
   let content;
@@ -100,6 +103,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
       />
     );
   } else {
+    // ✅ Приводим к строке
+    const title = article?.title?.[currentLang] || article?.title?.ru || "";
+    const subtitle =
+      article?.subtitle?.[currentLang] || article?.subtitle?.ru || "";
+
     content = (
       <>
         <div className={cls.avatarWrapper}>
@@ -107,8 +115,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         </div>
         <Text
           className={cls.title}
-          title={article?.title}
-          text={article?.subtitle}
+          title={title} // ✅ уже string
+          text={subtitle} // ✅ уже string
           size={TextSize.L}
         />
         <div className={cls.articleInfo}>
@@ -126,7 +134,13 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.ArticleDetails, {}, className ? [className] : [])}>
+      <div
+        className={classNames(
+          cls.ArticleDetails,
+          {},
+          className ? [className] : [],
+        )}
+      >
         {content}
       </div>
     </DynamicModuleLoader>

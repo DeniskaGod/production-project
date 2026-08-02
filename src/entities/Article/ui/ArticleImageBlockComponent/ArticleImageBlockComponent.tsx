@@ -1,27 +1,36 @@
-import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
-import cls from './ArticleImageBlockComponent.module.scss';
-import { ArticleImageBlock } from '../../model/types/article';
-import { Text, TextAlign } from '@/shared/ui/Text/Text';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { useTranslation } from "react-i18next";
+import { memo } from "react";
+import cls from "./ArticleImageBlockComponent.module.scss";
+import { ArticleImageBlock } from "../../model/types/article";
+import { Text, TextAlign } from "@/shared/ui/Text/Text";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useLanguage } from "@/shared/lib/hooks/useLanguage/useLanguage";
 
 interface ArticleImageBlockComponentProps {
-    className?: string;
-    block: ArticleImageBlock;
+  className?: string;
+  block: ArticleImageBlock;
 }
 
-export const ArticleImageBlockComponent = memo((props: ArticleImageBlockComponentProps) => {
+export const ArticleImageBlockComponent = memo(
+  (props: ArticleImageBlockComponentProps) => {
     const { className, block } = props;
-    const { t } = useTranslation();
+    const { currentLang } = useLanguage();
+
+    const title = block.title?.[currentLang] || block.title?.ru || "";
 
     return (
-        <div className={classNames(cls.ArticleImageBlockComponent, {}, className ? [className] : [])}>
-            <img src={block.src} alt={block.title} className={cls.img} />
-            {block.title && (
-                <Text text={block.title} align={TextAlign.CENTER} />
-            )}
-        </div>
+      <div
+        className={classNames(
+          cls.ArticleImageBlockComponent,
+          {},
+          className ? [className] : [],
+        )}
+      >
+        <img src={block.src} alt={title} className={cls.img} />
+        {title && <Text text={title} align={TextAlign.CENTER} />}
+      </div>
     );
-});
+  },
+);
 
-ArticleImageBlockComponent.displayName = 'ArticleImageBlockComponent';
+ArticleImageBlockComponent.displayName = "ArticleImageBlockComponent";

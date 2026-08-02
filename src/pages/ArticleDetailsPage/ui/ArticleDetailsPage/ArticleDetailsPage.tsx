@@ -25,6 +25,7 @@ import {
 } from "@/entities/Article/model/selectors/articleDetails";
 import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { Page } from "@/widgets/Page/Page";
+import { useLanguage } from "@/shared/lib/hooks/useLanguage/useLanguage";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -44,6 +45,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const article = useSelector(getArticleDetailsData);
   const articleError = useSelector(getArticleDetailsError);
   const articleIsLoading = useSelector(getArticleDetailsIsLoading);
+  const { currentLang } = useLanguage();
 
   useEffect(() => {
     if (id) {
@@ -78,7 +80,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     );
   }
 
-  // ✅ Показываем комментарии и форму только если статья загружена и нет ошибки
   const showComments = article && !articleError && !articleIsLoading;
 
   return (
@@ -93,9 +94,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
           {t("Назад к списку")}
         </Button>
-        <ArticleDetails id={id} />
+        {/* ✅ Передаем currentLang в ArticleDetails */}
+        <ArticleDetails id={id} currentLang={currentLang} />
 
-        {/* ✅ Показываем форму и комментарии только если статья загружена */}
         {showComments && (
           <>
             <AddCommentForm

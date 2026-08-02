@@ -1,3 +1,4 @@
+// entities/Article/model/types/article.ts
 import { User } from "@/entities/User";
 
 export enum ArticleSortField {
@@ -12,6 +13,12 @@ export enum ArticleBlockType {
   TEXT = "TEXT",
 }
 
+// ✅ Тип для перевода
+export type TranslationText = {
+  ru: string;
+  en: string;
+};
+
 export interface ArticleBlockBase {
   id: string;
   type: ArticleBlockType;
@@ -25,13 +32,13 @@ export interface ArticleCodeBlock extends ArticleBlockBase {
 export interface ArticleImageBlock extends ArticleBlockBase {
   type: ArticleBlockType.IMAGE;
   src: string;
-  title: string;
+  title: TranslationText; // ✅ было string, стало TranslationText
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
   type: ArticleBlockType.TEXT;
-  paragraphs: string[];
-  title?: string;
+  paragraphs: TranslationText; // ✅ было string[], стало TranslationText (объект с ru/en)
+  title?: TranslationText; // ✅ было string, стало TranslationText
 }
 
 export type ArticleBlock =
@@ -53,8 +60,8 @@ export enum ArticleView {
 
 export interface Article {
   id: string;
-  title: string;
-  subtitle: string;
+  title: TranslationText; // ✅ было string, стало TranslationText
+  subtitle: TranslationText; // ✅ было string, стало TranslationText
   user: User;
   img: string;
   views: number;
