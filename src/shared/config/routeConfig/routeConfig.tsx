@@ -1,5 +1,6 @@
 import { useTheme } from "@/app/providers/ThemeProvider/lib/useTheme";
 import { ArticleDetailsPageAsync } from "@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.async";
+import { ArticleEditPage } from "@/pages/ArticleEditPage";
 import { ArticlesPageAsync } from "@/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ProfilePage } from "@/pages/ProfilePage";
@@ -29,6 +30,8 @@ export enum AppRoutes {
   PROFILE = "profile",
   ARTICLES = "articles",
   ARTICLES_DETAILS = "articles_details",
+  ARTICLES_CREATE = "articles_create",
+  ARTICLES_EDIT = "articles_edit",
   // Last
   NOT_FOUND = "not_found",
 }
@@ -39,6 +42,8 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.PROFILE]: "/profile/", // + id
   [AppRoutes.ARTICLES]: "/articles",
   [AppRoutes.ARTICLES_DETAILS]: "/articles/", // + id
+  [AppRoutes.ARTICLES_CREATE]: "/articles/new",
+  [AppRoutes.ARTICLES_EDIT]: "/articles/:id/edit",
   [AppRoutes.NOT_FOUND]: "*",
 };
 
@@ -82,6 +87,24 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: (
       <PageWrapper>
         <ArticleDetailsPageAsync />
+      </PageWrapper>
+    ),
+    authOnly: true,
+  },
+  [AppRoutes.ARTICLES_CREATE]: {
+    path: RoutePath[AppRoutes.ARTICLES_CREATE],
+    element: (
+      <PageWrapper>
+        <ArticleEditPage />
+      </PageWrapper>
+    ),
+    authOnly: true,
+  },
+  [AppRoutes.ARTICLES_EDIT]: {
+    path: RoutePath[AppRoutes.ARTICLES_EDIT],
+    element: (
+      <PageWrapper>
+        <ArticleEditPage />
       </PageWrapper>
     ),
     authOnly: true,

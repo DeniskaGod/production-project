@@ -18,7 +18,7 @@ export default function StoreProvider({
   const store = createReduxStore(
     initialState,
     // navigate
-    );
+  );
 
   return <Provider store={store}>{children}</Provider>;
 }

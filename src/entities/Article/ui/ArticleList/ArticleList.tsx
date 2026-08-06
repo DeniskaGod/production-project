@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { memo } from "react";
+import { HTMLAttributeAnchorTarget, memo } from "react";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import cls from "./ArticleList.module.scss";
 import { Article, ArticleView } from "../../model/types/article";
@@ -11,6 +11,7 @@ interface ArticleListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
+  target?: HTMLAttributeAnchorTarget;
   view?: ArticleView;
 }
 
@@ -22,7 +23,7 @@ const getSkeletons = (view: ArticleView) =>
     ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
-  const { className, articles, view = ArticleView.SMALL, isLoading } = props;
+  const { className, articles, view = ArticleView.SMALL, isLoading, target } = props;
   const { t } = useTranslation("article");
 
   const renderArticle = (article: Article) => (
@@ -31,6 +32,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       view={view}
       className={cls.card}
       key={article.id}
+      target={target}
     />
   );
 
@@ -50,4 +52,3 @@ export const ArticleList = memo((props: ArticleListProps) => {
 });
 
 ArticleList.displayName = "ArticleList";
-//  9
