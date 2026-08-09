@@ -23,7 +23,13 @@ const getSkeletons = (view: ArticleView) =>
     ));
 
 export const ArticleList = memo((props: ArticleListProps) => {
-  const { className, articles, view = ArticleView.SMALL, isLoading, target } = props;
+  const {
+    className,
+    articles,
+    view = ArticleView.SMALL,
+    isLoading,
+    target,
+  } = props;
   const { t } = useTranslation("article");
 
   const renderArticle = (article: Article) => (
@@ -41,7 +47,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       className={classNames(
         cls.ArticleList,
         {},
-        [className, cls[view]].filter((item): item is string => Boolean(item))
+        [className, cls[view]].filter((item): item is string => Boolean(item)),
       )}
     >
       {articles.length > 0 ? articles.map(renderArticle) : null}

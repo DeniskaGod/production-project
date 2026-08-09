@@ -20,8 +20,7 @@ $api.interceptors.request.use((config) => {
     try {
       const user = JSON.parse(userData);
       if (user?.id) {
-        // ✅ Проверяем что headers существует
-        if (!config.headers) {
+         if (!config.headers) {
           config.headers = {};
         }
         config.headers.Authorization = `Bearer ${user.id}`;

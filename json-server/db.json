@@ -458,6 +458,366 @@
           }
         }
       ]
+    },
+    {
+      "id": "11",
+      "title": {
+        "ru": "Python новости 5",
+        "en": "Python news 5"
+      },
+      "subtitle": {
+        "ru": "Что нового в Python за 2022 год?",
+        "en": "What's new in Python for 2022?"
+      },
+      "img": "https://avatars.mds.yandex.net/i?id=fc6e785efa4e25eff015d06944133f9a_l-5347210-images-thumbs&n=13",
+      "views": 6453,
+      "createdAt": "26.02.2023",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": {
+        "ru": "Kotlin новости 5",
+        "en": "Kotlin news 5"
+      },
+      "subtitle": {
+        "ru": "Что нового в Kotlin за 2022 год?",
+        "en": "What's new in Kotlin for 2022?"
+      },
+      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
+      "views": 1022,
+      "createdAt": "26.02.2026",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": {
+        "ru": "Python новости 6",
+        "en": "Python news 6"
+      },
+      "subtitle": {
+        "ru": "Что нового в Python за 2022 год?",
+        "en": "What's new in Python for 2022?"
+      },
+      "img": "https://avatars.mds.yandex.net/i?id=fc6e785efa4e25eff015d06944133f9a_l-5347210-images-thumbs&n=13",
+      "views": 6453,
+      "createdAt": "26.02.2023",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": {
+        "ru": "Kotlin новости 6",
+        "en": "Kotlin news 6"
+      },
+      "subtitle": {
+        "ru": "Что нового в Kotlin за 2022 год?",
+        "en": "What's new in Kotlin for 2022?"
+      },
+      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
+      "views": 1022,
+      "createdAt": "26.02.2026",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": {
+        "ru": "Python новости 7",
+        "en": "Python news 7"
+      },
+      "subtitle": {
+        "ru": "Что нового в Python за 2022 год?",
+        "en": "What's new in Python for 2022?"
+      },
+      "img": "https://avatars.mds.yandex.net/i?id=fc6e785efa4e25eff015d06944133f9a_l-5347210-images-thumbs&n=13",
+      "views": 6453,
+      "createdAt": "26.02.2023",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": {
+        "ru": "Kotlin новости 7",
+        "en": "Kotlin news 7"
+      },
+      "subtitle": {
+        "ru": "Что нового в Kotlin за 2022 год?",
+        "en": "What's new in Kotlin for 2022?"
+      },
+      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
+      "views": 1022,
+      "createdAt": "26.02.2026",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": {
+        "ru": "Python новости 8",
+        "en": "Python news 8"
+      },
+      "subtitle": {
+        "ru": "Что нового в Python за 2022 год?",
+        "en": "What's new in Python for 2022?"
+      },
+      "img": "https://avatars.mds.yandex.net/i?id=fc6e785efa4e25eff015d06944133f9a_l-5347210-images-thumbs&n=13",
+      "views": 6453,
+      "createdAt": "26.02.2023",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": {
+        "ru": "Kotlin новости 8",
+        "en": "Kotlin news 8"
+      },
+      "subtitle": {
+        "ru": "Что нового в Kotlin за 2022 год?",
+        "en": "What's new in Kotlin for 2022?"
+      },
+      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
+      "views": 1022,
+      "createdAt": "26.02.2026",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "title": {
+        "ru": "Python новости 9",
+        "en": "Python news 9"
+      },
+      "subtitle": {
+        "ru": "Что нового в Python за 2022 год?",
+        "en": "What's new in Python for 2022?"
+      },
+      "img": "https://avatars.mds.yandex.net/i?id=fc6e785efa4e25eff015d06944133f9a_l-5347210-images-thumbs&n=13",
+      "views": 6453,
+      "createdAt": "26.02.2023",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "title": {
+        "ru": "Kotlin новости 9",
+        "en": "Kotlin news 9"
+      },
+      "subtitle": {
+        "ru": "Что нового в Kotlin за 2022 год?",
+        "en": "What's new in Kotlin for 2022?"
+      },
+      "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
+      "views": 1022,
+      "createdAt": "26.02.2026",
+      "userId": "1",
+      "type": [
+        "IT"
+      ],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": {
+            "ru": "Заголовок этого блока",
+            "en": "Title of this block"
+          },
+          "paragraphs": {
+            "ru": [
+              "Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка."
+            ],
+            "en": [
+              "The program traditionally called 'Hello, world!' is very simple. It outputs the phrase 'Hello, world!' or something similar."
+            ]
+          }
+        }
+      ]
     }
   ],
   "comments": [

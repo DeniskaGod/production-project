@@ -97,10 +97,11 @@ module.exports = (env = {}) => {
       ],
     },
     resolve: {
-      extensions: [".tsx", ".ts", ".js"],
+      extensions: [".tsx", ".ts", ".js", ".jsx"],
       alias: {
         "@": path.resolve(__dirname, "src"),
         "@config": path.resolve(__dirname, "config"),
+        'react/jsx-runtime': 'react/jsx-runtime.js',
       },
     },
     devtool: isDev ? "inline-source-map" : false,
