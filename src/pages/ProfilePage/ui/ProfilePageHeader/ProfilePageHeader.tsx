@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { getProfileData, profileActions } from "@/entities/Profile";
 import { updateProfileData } from "@/entities/Profile/model/services/updateProfileData/updateProfileData";
 import { getUserAuthData } from "@/entities/User";
+import { HStack } from "@/shared/ui/Stack";
 
 interface ProfilePageHeaderProps {
   className?: string;
@@ -38,44 +39,43 @@ export default function ProfilePageHeader({
   }, [dispatch]);
 
   return (
-    <div
+    <HStack
+      max
+      justify="between"
       className={classNames(
-        cls.ProfilePageHeader,
+        '',
         {},
         className ? [className] : [],
       )}
     >
       <Text title={t("Профиль")} />
       {canEdit && (
-        <div className={cls.btnWrapper}>
+        <div>
           {readonly ? (
             <Button
-              className={cls.editBtn}
               theme={ThemeButton.OUTLINE}
               onClick={onEdit}
             >
               {t("Редактировать")}
             </Button>
           ) : (
-            <>
+            <HStack gap="8">
               <Button
-                className={cls.editBtn}
                 theme={ThemeButton.OUTLINE_RED}
                 onClick={onCancel}
               >
                 {t("Отменить")}
               </Button>
               <Button
-                className={cls.saveBtn}
                 theme={ThemeButton.OUTLINE}
                 onClick={onSave}
               >
                 {t("Сохранить")}
               </Button>
-            </>
+            </HStack>
           )}
         </div>
       )}
-    </div>
+    </HStack>
   );
 }

@@ -8,6 +8,7 @@ import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { getSidebarItems } from "../../model/item";
 import { useSelector } from "react-redux";
 import { getUserAuthData } from "@/entities/User";
+import { VStack } from "@/shared/ui/Stack";
 
 interface SidebarProps {
   className?: string;
@@ -42,7 +43,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
       >
         {collapsed ? ">" : "<"}
       </Button>
-      <div className={cls.items}>{itemList}</div>
+      <VStack gap={'20'} className={cls.items}>{itemList}</VStack>
       <div className={cls.switchers}>
         <ThemeSwitcher />
         <LangSwitcher

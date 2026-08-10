@@ -33,7 +33,21 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".tsx", ".ts"] }],
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "warn",
-    "i18next/no-literal-string": ['error', {markupOnly: true, ignoreAttribute: ['data-testid', 'to']}], // Настройка для i18next
+    "i18next/no-literal-string": [
+      "error",
+      {
+        markupOnly: true,
+        ignoreAttribute: [
+          "data-testid",
+          "to",
+          "target",
+          "justify",
+          "align",
+          "direction",
+          "gap",
+        ],
+      },
+    ], // Настройка для i18next
     // Отключаем правила import, так как нет плагина
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",

@@ -45,6 +45,9 @@
   transition: 0.2s;
   cursor: pointer;
 
+  .card { 
+    background: rgb(210, 207, 207);
+  }
   .date {
     position: absolute;
     right: 0;
