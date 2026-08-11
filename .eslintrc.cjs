@@ -46,6 +46,7 @@ module.exports = {
           "direction",
           "gap",
           "role",
+          "as",
         ],
       },
     ], // Настройка для i18next
