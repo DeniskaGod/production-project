@@ -31,6 +31,7 @@ export const CurrencySelect = memo(({
     return (
         <ListBox
             className={className}
+
             value={value}
             defaultValue={t('Укажите валюту')}
             label={t('Укажите валюту')}
@@ -41,6 +42,5 @@ export const CurrencySelect = memo(({
         />
     );
 });
-//  22
 
 CurrencySelect.displayName = 'CurrencySelect';
