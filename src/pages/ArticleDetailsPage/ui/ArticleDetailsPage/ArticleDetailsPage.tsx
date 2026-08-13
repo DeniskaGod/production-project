@@ -10,7 +10,6 @@ import DynamicModuleLoader, {
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import {
-  articleDetailsCommentsReducer,
   getArticleComments,
 } from "../../model/slices/articleDetailsCommentsSlice";
 import { useSelector } from "react-redux";
@@ -23,18 +22,11 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from "@/entities/Article/model/selectors/articleDetails";
-import Button, { ThemeButton } from "@/shared/ui/Button/Button";
 import { Page } from "@/widgets/Page/Page";
 import { useLanguage } from "@/shared/lib/hooks/useLanguage/useLanguage";
-import {
-  articleDetailsPageRecommendationsReducer,
-  getArticleRecommendations,
-} from "../../model/slices/articleDetailsPageRecommendationsSlice";
-import { getArticleRecommendationsIsLoading } from "../../model/selectors/recommendActions";
-import { ArticleList } from "@/entities/Article/ui/ArticleList/ArticleList";
-import { fetchArticleRecommendations } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations";
 import { articleDetailsPageReducer } from "../../model/slices";
 import ArticleDetailsPageHeader from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
+import { ArticleRecommendationsList } from "@/features/articleRecommendationsList";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -50,11 +42,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
   const comments = useSelector(getArticleComments.selectAll);
-  const recommendations = useSelector(getArticleRecommendations.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-  const recommendationsIsLoading = useSelector(
-    getArticleRecommendationsIsLoading,
-  );
   const article = useSelector(getArticleDetailsData);
   const articleError = useSelector(getArticleDetailsError);
   const articleIsLoading = useSelector(getArticleDetailsIsLoading);
@@ -63,11 +51,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   useEffect(() => {
     if (id) {
       dispatch(fetchCommentsByArticleId(id));
-      dispatch(fetchArticleRecommendations());
     }
   }, [dispatch, id]);
-
-  
 
   const onSendComment = useCallback(
     (text: string) => {
@@ -108,17 +93,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
         {showComments && (
           <>
-            <Text
-              size={TextSize.L}
-              text={t("Рекомендации")}
-              className={cls.commentTitle}
-            />
-            <ArticleList
-              articles={recommendations}
-              isLoading={recommendationsIsLoading}
-              className={cls.recommend}
-              target="_blank"
-            />
+            <ArticleRecommendationsList />
             <AddCommentForm
               className={cls.commentTitle}
               onSendComment={onSendComment}

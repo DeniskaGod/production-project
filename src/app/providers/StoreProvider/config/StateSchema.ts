@@ -7,6 +7,7 @@ import { LoginSchema } from "@/features/AuthByUsername";
 import { UISchema } from "@/features/UI";
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage/model/types";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
+import { rtkApi } from "@/shared/api/rtkApi"; // ✅ добавить
 import {
   AnyAction,
   CombinedState,
@@ -21,6 +22,7 @@ export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
   ui: UISchema;
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>; // ✅ добавить
 
   // async reducers
   loginForm?: LoginSchema;
@@ -33,17 +35,17 @@ export interface StateSchema {
 
 export type StateSchemaKey = keyof StateSchema;
 export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
+
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
-  // true = already mounted, false = not mounted
   getMountedReducers: () => MountedReducers;
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
-  reducerManager: ReducerManager; // ← было replaceReducer, исправлено на reducerManager
+  reducerManager: ReducerManager;
 }
 
 export interface ThunkExtraArg {
