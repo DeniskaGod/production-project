@@ -1,3 +1,10 @@
+.CommentList {
+  width: 100%; // ✅ добавить
+  display: flex;
+  flex-direction: column;
+  gap: 16px; // ✅ отступы между комментариями
+}
+
 .comment {
-  margin-top: 20px;
+  width: 100%;
 }

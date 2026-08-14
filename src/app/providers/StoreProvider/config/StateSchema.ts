@@ -1,9 +1,9 @@
 import { ArticleDetailsSchema } from "@/entities/Article/model/types/articleDetailsSchema";
 import { CounterSchema } from "@/entities/Counter";
-import { ProfileSchema } from "@/entities/Profile/model/types/profile";
 import { UserSchema } from "@/entities/User";
 import { AddCommentFormSchema } from "@/features/addCommentForm";
 import { LoginSchema } from "@/features/AuthByUsername";
+import { ProfileSchema } from "@/features/editableProfileCard";
 import { UISchema } from "@/features/UI";
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage/model/types";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";

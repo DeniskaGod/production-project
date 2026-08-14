@@ -1,6 +1,8 @@
 .CommentCard {
   padding: 10px;
   border: 1px solid var(--primary-color);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .header {
@@ -10,6 +12,7 @@
 
 .text {
   margin-top: 10px;
+  word-break: break-word;
 }
 
 .username {

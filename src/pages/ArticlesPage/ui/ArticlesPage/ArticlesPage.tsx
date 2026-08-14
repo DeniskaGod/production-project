@@ -24,6 +24,7 @@ import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters"
 import { Page } from "@/widgets/Page/Page";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { ArticleList } from "@/entities/Article/ui/ArticleList/ArticleList";
+import { ArticleInfiniteList } from "../ArticleInfiniteList/ArticleInfiniteList";
 
 interface ArticlesPageProps {
   className?: string;
@@ -35,12 +36,7 @@ const reducers: ReducersList = {
 
 const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const articles = useSelector(getArticles.selectAll);
-  const isLoading = useSelector(getArticlesPageIsLoading);
-  const view = useSelector(getArticlesPageView);
-  const error = useSelector(getArticlesPageError);
   const [searchParams] = useSearchParams();
 
   const onLoadNextPart = useCallback(() => {
@@ -62,12 +58,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         )}
       >
         <ArticlesPageFilters />
-        <ArticleList
-          isLoading={isLoading}
-          view={view}
-          articles={articles}
-          className={cls.list}
-        />
+        <ArticleInfiniteList className={cls.list} />
       </Page>
     </DynamicModuleLoader>
   );

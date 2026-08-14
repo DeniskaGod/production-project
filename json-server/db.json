@@ -952,6 +952,36 @@
       "userId": "1",
       "text": "d",
       "id": "zUAT4By"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "афафафfa",
+      "id": "WEJ1dVZ"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "афафафfa",
+      "id": "XoEwZuL"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "hahah",
+      "id": "C1UYt9e"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "hahah",
+      "id": "TDXSH5j"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "haha13",
+      "id": "LJ5rnKO"
     }
   ],
   "users": [
@@ -976,7 +1006,7 @@
       "first": "Denis",
       "lastname": "Denisov",
       "age": 20,
-      "currency": "Lei",
+      "currency": "LEI",
       "country": "Moldova",
       "city": "Chisinau",
       "username": "admin",

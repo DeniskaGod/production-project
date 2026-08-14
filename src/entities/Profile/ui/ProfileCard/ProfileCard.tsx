@@ -3,7 +3,7 @@ import cls from "./ProfileCard.module.scss";
 import { Input } from "@/shared/ui/Input/Input";
 import { Text, TextAlign, TextTheme } from "@/shared/ui/Text/Text";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
-import { Profile } from "../../model/types/profile";
+import { Profile } from "../../../../features/editableProfileCard/types/profile";
 import Loader from "@/shared/ui/Loader/Loader";
 import Avatar from "@/shared/ui/Avatar/Avatar";
 import { Currency, CurrencySelect } from "@/entities/Currency";
@@ -97,7 +97,7 @@ export const ProfileCard = ({
           <Avatar src={data?.avatar} />
         </HStack>
       )}
-      <Input 
+      <Input
         value={data?.first || ""}
         placeholder={t("Ваше имя")}
         className={cls.input}
@@ -112,11 +112,14 @@ export const ProfileCard = ({
         onChange={onChangeLastname}
       />
       <Input
-        value={data?.age}
+        value={data?.age !== undefined ? String(data.age) : ""}
         placeholder={t("Ваш возраст")}
         className={cls.input}
         readonly={readonly}
         onChange={onChangeAge}
+        type="number" // ✅ добавляем type="number"
+        min="0" // ✅ минимальное значение
+        max="150" // ✅ максимальное значение
       />
       <Input
         value={data?.city || ""}
