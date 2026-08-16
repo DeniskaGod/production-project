@@ -67,8 +67,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
         {showComments && (
           <>
-            <ArticleRecommendationsList />
-            <ArticleDetailsComments id={id} />
+            <ArticleRecommendationsList className={cls.commentTitle} />
+            <ArticleDetailsComments id={id} className={cls.commentTitle}/>
           </>
         )}
       </Page>
