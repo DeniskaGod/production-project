@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { USER_LOCALSTORAGE_KEY } from "../const/localStorage";
 declare const __IS_DEV__: boolean;
 
-// ✅ Замени process.env на глобальную переменную
 const baseUrl = __IS_DEV__
   ? "http://localhost:8000"
   : "https://production-project-server.vercel.app";

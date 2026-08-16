@@ -13,6 +13,7 @@ interface ArticleListProps {
   isLoading?: boolean;
   target?: HTMLAttributeAnchorTarget;
   view?: ArticleView;
+  virtualized?: boolean;
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -29,6 +30,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     view = ArticleView.SMALL,
     isLoading,
     target,
+    virtualized = true,
   } = props;
   const { t } = useTranslation("article");
 
@@ -41,6 +43,26 @@ export const ArticleList = memo((props: ArticleListProps) => {
       target={target}
     />
   );
+
+  if (virtualized) {
+    return (
+      <div
+        className={classNames(
+          cls.ArticleList,
+          {},
+          [className, cls[view]].filter((item): item is string =>
+            Boolean(item),
+          ),
+        )}
+      >
+        {articles.length > 0 ? (
+          <div className={cls.list}>{articles.map(renderArticle)}</div>
+        ) : null}
+        {isLoading && getSkeletons(view)}
+        {!isLoading && articles.length === 0 && <Text text={t("Статей нет")} />}
+      </div>
+    );
+  }
 
   return (
     <div

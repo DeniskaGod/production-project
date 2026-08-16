@@ -1,19 +1,30 @@
 .ArticleList {
   width: 100%;
-  display: flex; // ✅ обязательно
-  flex-wrap: wrap; // ✅ обязательно
-  gap: 50px; // ✅ общий gap для всех карточек
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
 }
 
 .BIG {
   .card {
     width: 100%;
-    margin-bottom: 0; // ✅ убрать лишний margin, gap работает
+    margin-bottom: 0;
   }
 }
 
 .SMALL {
   .card {
-    min-width: 220px;
+    min-width: 250px;
   }
+  .list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
 }

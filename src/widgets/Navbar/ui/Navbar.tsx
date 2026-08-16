@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import React, { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cls from "./Navbar.module.scss";
-import { getUserAuthData, userActions } from "@/entities/User";
+import { getUserAuthData, userActions, UserRole } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Text, TextTheme } from "@/shared/ui/Text/Text";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
@@ -34,12 +34,20 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  // ✅ Проверка на ADMIN или OWNER
+  const userRoles = authData?.roles ?? authData?.role ?? [];
+
+  const isAdminPanelVisible =
+    userRoles.some(
+      (role) => role === UserRole.ADMIN || role === UserRole.OWNER,
+    ) ?? false;
+
   if (authData) {
     return (
       <header className={classNames(cls.Navbar, {}, [className])}>
         <Text
           className={cls.appName}
-          title={t("Ulbi TV App")}
+          title={t("Deniska")}
           theme={TextTheme.INVERTED}
         />
         <AppLink
@@ -53,6 +61,9 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           direction="bottom left"
           className={cls.dropdown}
           items={[
+            ...(isAdminPanelVisible
+              ? [{ content: t("Админ панель"), href: RoutePath.admin_panel }]
+              : []),
             {
               content: t("Профиль"),
               href: RoutePath.profile + authData.id,

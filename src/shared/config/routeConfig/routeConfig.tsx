@@ -1,4 +1,6 @@
 import { useTheme } from "@/app/providers/ThemeProvider/lib/useTheme";
+import { UserRole } from "@/entities/User";
+import { AdminPanelPage } from "@/pages/AdminPanelPage";
 import { ArticleDetailsPageAsync } from "@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.async";
 import { ArticleEditPage } from "@/pages/ArticleEditPage";
 import { ArticlesPageAsync } from "@/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async";
@@ -22,6 +24,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
+  roles?: UserRole[];
 };
 
 export enum AppRoutes {
@@ -32,6 +35,7 @@ export enum AppRoutes {
   ARTICLES_DETAILS = "articles_details",
   ARTICLES_CREATE = "articles_create",
   ARTICLES_EDIT = "articles_edit",
+  ADMIN_PANEL = "admin_panel",
   // Last
   NOT_FOUND = "not_found",
 }
@@ -44,6 +48,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.ARTICLES_DETAILS]: "/articles/", // + id
   [AppRoutes.ARTICLES_CREATE]: "/articles/new",
   [AppRoutes.ARTICLES_EDIT]: "/articles/:id/edit",
+  [AppRoutes.ADMIN_PANEL]: "/admin",
   [AppRoutes.NOT_FOUND]: "*",
 };
 
@@ -108,6 +113,16 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
       </PageWrapper>
     ),
     authOnly: true,
+  },
+  [AppRoutes.ADMIN_PANEL]: {
+    path: RoutePath[AppRoutes.ADMIN_PANEL],
+    element: (
+      <PageWrapper>
+        <AdminPanelPage />
+      </PageWrapper>
+    ),
+    authOnly: true,
+    roles: [UserRole.ADMIN, UserRole.OWNER],
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePath[AppRoutes.NOT_FOUND],

@@ -7,6 +7,7 @@ import { ProfileSchema } from "@/features/editableProfileCard";
 import { UISchema } from "@/features/UI";
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage/model/types";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
+import { AdminPanelSchema } from "@/pages/AdminPanelPage/model";
 import { rtkApi } from "@/shared/api/rtkApi"; // ✅ добавить
 import {
   AnyAction,
@@ -31,6 +32,7 @@ export interface StateSchema {
   addCommentForm?: AddCommentFormSchema;
   articlesPage: ArticlesPageSchema;
   articleDetailsPage?: ArticleDetailsPageSchema;
+  adminPanel?: AdminPanelSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

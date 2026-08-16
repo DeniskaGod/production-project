@@ -12,13 +12,17 @@ const AppRouter = () => {
     const element = (
       <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
     );
+    const wrappedElement = route.authOnly ? (
+      <RequireAuth roles={route.roles}>{element}</RequireAuth>
+    ) : (
+      element
+    );
+
     return (
       <Route
         key={route.path}
         path={route.path}
-        element={
-          route.authOnly ? <RequireAuth>{element}</RequireAuth> : element
-        }
+        element={wrappedElement}
       />
     );
   }, []);

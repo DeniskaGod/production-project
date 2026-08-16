@@ -6,17 +6,26 @@ const initialState: UserSchema = {
   _inited: false,
 };
 
+const normalizeUserRoles = (user: User): User => {
+  const roles = user.roles ?? user.role ?? [];
+  return {
+    ...user,
+    roles,
+    role: roles,
+  };
+};
+
 const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {
     setAuthData: (state, action: PayloadAction<User>) => {
-      state.authData = action.payload;
+      state.authData = normalizeUserRoles(action.payload);
     },
     initAuthData: (state) => {
       const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
       if (user) {
-        state.authData = JSON.parse(user);
+        state.authData = normalizeUserRoles(JSON.parse(user));
       }
       state._inited = true;
     },

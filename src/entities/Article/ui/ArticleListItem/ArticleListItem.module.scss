@@ -68,12 +68,17 @@
     width: 200px;
     height: 200px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
   }
 
   .img {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    display: block;
   }
 
   .infoWrapper {
