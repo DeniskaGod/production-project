@@ -6,9 +6,11 @@ import { Sidebar } from "@/widgets/Sidebar";
 import { AppRouter } from "./providers/router";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserInited, userActions } from "@/entities/User";
+import { useTranslation } from "react-i18next";
 
 export default function App() {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const inited = useSelector(getUserInited)
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function App() {
 
   return (
     <div className={classNames("app", {}, [theme])}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>{t("Loading...")}</div>}>
         <Navbar />
         <div className="content-page">
           <Sidebar />

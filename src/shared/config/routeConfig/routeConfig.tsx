@@ -4,6 +4,7 @@ import { AdminPanelPage } from "@/pages/AdminPanelPage";
 import { ArticleDetailsPageAsync } from "@/pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage.async";
 import { ArticleEditPage } from "@/pages/ArticleEditPage";
 import { ArticlesPageAsync } from "@/pages/ArticlesPage/ui/ArticlesPage/ArticlesPage.async";
+import { ForbiddenPage } from "@/pages/ForbiddenPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { classNames } from "@/shared/lib/classNames/classNames";
@@ -36,6 +37,7 @@ export enum AppRoutes {
   ARTICLES_CREATE = "articles_create",
   ARTICLES_EDIT = "articles_edit",
   ADMIN_PANEL = "admin_panel",
+  FORBIDDEN = "forbidden",
   // Last
   NOT_FOUND = "not_found",
 }
@@ -49,6 +51,7 @@ export const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.ARTICLES_CREATE]: "/articles/new",
   [AppRoutes.ARTICLES_EDIT]: "/articles/:id/edit",
   [AppRoutes.ADMIN_PANEL]: "/admin",
+  [AppRoutes.FORBIDDEN]: "/forbidden",
   [AppRoutes.NOT_FOUND]: "*",
 };
 
@@ -123,6 +126,14 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     ),
     authOnly: true,
     roles: [UserRole.ADMIN, UserRole.OWNER],
+  },
+  [AppRoutes.FORBIDDEN]: {
+    path: RoutePath[AppRoutes.FORBIDDEN],
+    element: (
+      <PageWrapper>
+        <ForbiddenPage />
+      </PageWrapper>
+    ),
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePath[AppRoutes.NOT_FOUND],

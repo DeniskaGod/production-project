@@ -30,7 +30,7 @@ const RequireAuth = ({ children, roles }: RequireAuthProps) => {
     if (!hasRole) {
       return (
         <Navigate
-          to={RoutePath.main}
+          to={RoutePath.forbidden}
           state={{ from: location.pathname }}
           replace
         />
