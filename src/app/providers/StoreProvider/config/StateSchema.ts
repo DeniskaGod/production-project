@@ -8,10 +8,9 @@ import { UISchema } from "@/features/UI";
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage/model/types";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
 import { AdminPanelSchema } from "@/pages/AdminPanelPage/model";
-import { rtkApi } from "@/shared/api/rtkApi"; // ✅ добавить
+import { rtkApi } from "@/shared/api/rtkApi";
 import {
   AnyAction,
-  CombinedState,
   EnhancedStore,
   Reducer,
   ReducersMapObject,
@@ -23,7 +22,7 @@ export interface StateSchema {
   counter: CounterSchema;
   user: UserSchema;
   ui: UISchema;
-  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>; // ✅ добавить
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
   // async reducers
   loginForm?: LoginSchema;
@@ -40,7 +39,7 @@ export type MountedReducers = OptionalRecord<StateSchemaKey, boolean>;
 
 export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>;
-  reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>;
+  reduce: (state: StateSchema | undefined, action: AnyAction) => StateSchema;
   add: (key: StateSchemaKey, reducer: Reducer) => void;
   remove: (key: StateSchemaKey) => void;
   getMountedReducers: () => MountedReducers;

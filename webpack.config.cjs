@@ -101,7 +101,12 @@ module.exports = (env = {}) => {
       alias: {
         "@": path.resolve(__dirname, "src"),
         "@config": path.resolve(__dirname, "config"),
-        'react/jsx-runtime': 'react/jsx-runtime.js',
+        "react/jsx-runtime": path.resolve(
+          __dirname,
+          "node_modules/react/jsx-runtime.js",
+        ), // ✅ добавить
+        react: path.resolve(__dirname, "node_modules/react"),
+        "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
       },
     },
     devtool: isDev ? "inline-source-map" : false,

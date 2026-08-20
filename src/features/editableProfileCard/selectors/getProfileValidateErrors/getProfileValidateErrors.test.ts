@@ -1,7 +1,7 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { getProfileValidateErrors } from "./getProfileValidateErrors";
-import { DeepPartial } from "@reduxjs/toolkit";
 import { ValidateProfileError } from "../../types/editableProfileCardSchema";
+import { DeepPartial } from "@/shared/lib/tests/deepPartial";
 
 describe("getProfileValidateErrors.test", () => {
   test("should work with filled state", () => {

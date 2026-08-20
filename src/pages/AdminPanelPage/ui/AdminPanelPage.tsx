@@ -294,11 +294,12 @@ const AdminPanelPage = memo(() => {
                       const titleStr =
                         typeof article.title === "string"
                           ? article.title
-                          : article.title;
+                          : article.title[i18n.language as "ru" | "en"] ||
+                            article.title.ru;
                       return (
                         <tr key={article.id}>
                           <td>
-                            <strong>{titleStr}</strong>
+                            <div className={cls.statLabel}>{titleStr}</div>
                           </td>
                           <td>{article.author}</td>
                           <td>

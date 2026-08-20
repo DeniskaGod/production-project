@@ -10,16 +10,15 @@ import { useTranslation } from "react-i18next";
 
 export default function App() {
   const { theme } = useTheme();
-  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const inited = useSelector(getUserInited)
+  const inited = useSelector(getUserInited);
   useEffect(() => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
 
   return (
     <div className={classNames("app", {}, [theme])}>
-      <Suspense fallback={<div>{t("Loading...")}</div>}>
+      <Suspense fallback={<div>"Loading..."</div>}>
         <Navbar />
         <div className="content-page">
           <Sidebar />

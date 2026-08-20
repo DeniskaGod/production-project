@@ -4,7 +4,7 @@
     "noImplicitAny": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "esnext",
+    "target": "es2020",
     "jsx": "react-jsx",
     "allowJs": true,
     "strict": true,
@@ -13,6 +13,7 @@
     "types": ["node", "jest"],
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"],
       "@config/*": ["./config/*"]
@@ -24,6 +25,7 @@
     "config/jest/jest.config.cjs",
     "**/*.test.ts",
     "**/*.test.tsx",
-    "./config/jest/setupTests.ts"],
+    "./config/jest/setupTests.ts"
+  ],
   "exclude": ["node_modules"]
 }

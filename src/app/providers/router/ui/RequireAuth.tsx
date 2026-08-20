@@ -5,7 +5,7 @@ import { getUserAuthData, UserRole } from "@/entities/User";
 import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
 
 interface RequireAuthProps {
-  children: JSX.Element;
+  children: React.ReactElement; // ✅ JSX.Element → React.ReactElement
   roles?: UserRole[];
 }
 
@@ -30,7 +30,7 @@ const RequireAuth = ({ children, roles }: RequireAuthProps) => {
     if (!hasRole) {
       return (
         <Navigate
-          to={RoutePath.forbidden}
+          to={RoutePath.forbidden || RoutePath.main}
           state={{ from: location.pathname }}
           replace
         />

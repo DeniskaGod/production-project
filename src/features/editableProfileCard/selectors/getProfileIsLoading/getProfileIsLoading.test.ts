@@ -1,6 +1,6 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { getProfileIsLoading } from "./getProfileIsLoading";
-import { DeepPartial } from "@reduxjs/toolkit";
+import { DeepPartial } from "@/shared/lib/tests/deepPartial";
 
 describe("getProfileIsLoading.test", () => {
   test("should work with filled state", () => {

@@ -4,16 +4,15 @@ import { counterReducer } from "@/entities/Counter";
 import { userReducer } from "@/entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "@/shared/api/api";
-import { CombinedState } from "@reduxjs/toolkit";
 import { uiReducer } from "@/features/UI";
-import { rtkApi } from "@/shared/api/rtkApi"; // ✅ добавить
+import { rtkApi } from "@/shared/api/rtkApi";
 
 export function createReduxStore(initialState?: StateSchema) {
   const rootReducers = {
     counter: counterReducer,
     user: userReducer,
     ui: uiReducer,
-    [rtkApi.reducerPath]: rtkApi.reducer, // ✅ добавить
+    [rtkApi.reducerPath]: rtkApi.reducer,
   } as ReducersMapObject<StateSchema>;
 
   const reducerManager = createReducerManager(rootReducers);
@@ -22,7 +21,7 @@ export function createReduxStore(initialState?: StateSchema) {
     reducer: reducerManager.reduce as (
       state: StateSchema | undefined,
       action: any,
-    ) => CombinedState<StateSchema>,
+    ) => StateSchema,
     devTools: __IS_DEV__,
     preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
@@ -32,7 +31,7 @@ export function createReduxStore(initialState?: StateSchema) {
             api: $api,
           },
         },
-      }).concat(rtkApi.middleware), // ✅ добавить middleware
+      }).concat(rtkApi.middleware),
   });
 
   // @ts-ignore

@@ -1,6 +1,6 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { getProfileError } from "./getProfileError";
-import { DeepPartial } from "@reduxjs/toolkit";
+import { DeepPartial } from "@/shared/lib/tests/deepPartial";
 
 describe("getProfileError.test", () => {
   test("should return error", () => {

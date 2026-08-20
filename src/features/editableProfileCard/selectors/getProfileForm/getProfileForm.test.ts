@@ -2,7 +2,7 @@ import { Currency } from "@/entities/Currency";
 import { getProfileForm } from "./getProfileForm";
 import { Country } from "@/entities/Country";
 import { StateSchema } from "@/app/providers/StoreProvider";
-import { DeepPartial } from "@reduxjs/toolkit";
+import { DeepPartial } from "@/shared/lib/tests/deepPartial";
 
 describe("getProfileForm.test", () => {
   test("should return error", () => {

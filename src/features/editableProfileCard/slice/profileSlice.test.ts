@@ -1,9 +1,16 @@
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";
-import { DeepPartial } from "@reduxjs/toolkit";
 import { profileActions, profileReducer } from "./profileSlice";
-import { ProfileSchema, ValidateProfileError } from "../types/editableProfileCardSchema";
+import {
+  ProfileSchema,
+  ValidateProfileError,
+} from "../types/editableProfileCardSchema";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
+
+// ✅ Создаем свой тип
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
 
 const data = {
   first: "Denis",
@@ -58,7 +65,9 @@ describe("profileSlice.test", () => {
     };
 
     expect(
-      profileReducer(state as ProfileSchema, updateProfileData.pending),
+      profileReducer(state as ProfileSchema, {
+        type: updateProfileData.pending.type,
+      }),
     ).toEqual({
       isLoading: true,
       validateErrors: undefined,
@@ -79,7 +88,6 @@ describe("profileSlice.test", () => {
       isLoading: false,
       validateErrors: undefined,
       readonly: true,
-      validateError: undefined,
       form: data,
       data,
     });

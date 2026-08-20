@@ -1,8 +1,12 @@
 import { Currency } from "@/entities/Currency";
 import { getProfileData } from "./getProfileData";
-import { DeepPartial } from "@reduxjs/toolkit";
 import { Country } from "@/entities/Country";
 import { StateSchema } from "@/app/providers/StoreProvider";
+
+// ✅ Создаем свой тип DeepPartial
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
 
 describe("getProfileData.test", () => {
   test("should return error", () => {

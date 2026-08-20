@@ -4,7 +4,7 @@ import { StateSchema } from "@/app/providers/StoreProvider";
 import { Article } from "@/entities/Article";
 import { ArticleDetailsPageRecommendationsSchema } from "../types/ArticleDetailsPageRecommendationsSchema";
 
-const recommendationsAdapter = createEntityAdapter<Article>({
+const recommendationsAdapter = createEntityAdapter<Article, string>({
   selectId: (article) => article.id,
 });
 
@@ -17,15 +17,15 @@ export const getArticleRecommendations =
 
 const articleDetailsPageRecommendationsSlice = createSlice({
   name: "articleDetailsPageRecommendationsSlice",
-  initialState:
-    recommendationsAdapter.getInitialState<ArticleDetailsPageRecommendationsSchema>(
-      {
-        isLoading: false,
-        error: undefined,
-        ids: [],
-        entities: {},
-      },
-    ),
+  initialState: recommendationsAdapter.getInitialState<
+    Omit<
+      ArticleDetailsPageRecommendationsSchema,
+      keyof ReturnType<typeof recommendationsAdapter.getInitialState>
+    >
+  >({
+    isLoading: false,
+    error: undefined,
+  }),
   reducers: {},
   extraReducers: (builder) => {
     builder

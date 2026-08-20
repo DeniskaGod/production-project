@@ -25,7 +25,7 @@ export const Modal = (props: ModalProps) => {
 
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(undefined); // ✅
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -77,7 +77,6 @@ export const Modal = (props: ModalProps) => {
     return null;
   }
 
-  // ✅ Исправлено: фильтруем undefined
   const additionalClasses = [className, theme, "app_modal"].filter(
     Boolean,
   ) as string[];

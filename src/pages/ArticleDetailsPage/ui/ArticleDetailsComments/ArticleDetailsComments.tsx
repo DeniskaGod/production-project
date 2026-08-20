@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { memo, useCallback, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { getArticleComments } from "../../model/slices/articleDetailsCommentsSlice";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
@@ -23,19 +24,20 @@ export const ArticleDetailsComments = memo(
     const comments = useSelector(getArticleComments.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
+
     useEffect(() => {
       dispatch(fetchCommentsByArticleId(id));
     }, [dispatch, id]);
 
-     const onSendComment = useCallback(
-    (text: string) => {
-      if (id) {
-        dispatch(fetchCommentsByArticleId(id));
-      }
-    },
-    [dispatch, id],
-  );
+    const onSendComment = useCallback(
+      (text: string) => {
+        if (id && text.trim()) {
+          dispatch(addCommentForArticle(text));
+        }
+      },
+      [dispatch, id],
+    );
 
     return (
       <VStack gap="16" max className={classNames("", {}, [className])}>
