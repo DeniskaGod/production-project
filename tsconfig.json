@@ -17,7 +17,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@config/*": ["./config/*"]
-    }
+    },
+    "isolatedModules": true
   },
   "include": [
     "src/**/*",
