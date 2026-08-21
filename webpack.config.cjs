@@ -64,7 +64,7 @@ module.exports = (env = {}) => {
       new BundleAnalyzerPlugin({
         openAnalyzer: false,
       }),
-      // ✅ Добавь это:
+      
       new CopyWebpackPlugin({
         patterns: [
           {
@@ -104,7 +104,7 @@ module.exports = (env = {}) => {
         "react/jsx-runtime": path.resolve(
           __dirname,
           "node_modules/react/jsx-runtime.js",
-        ), // ✅ добавить
+        ), 
         react: path.resolve(__dirname, "node_modules/react"),
         "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
       },
